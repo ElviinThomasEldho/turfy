@@ -1,4 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 
@@ -13,6 +16,28 @@ def index(request):
 
 
 def register(request):
+    form = RegisterForm()
+
+    if request.method == "POST":
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+
+            user = authenticate(request, username=username, password=password)
+
+            if user is not None:
+                login(request, user)
+                return redirect('createPlayer')
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'app/register.html', context)
+
+def createPlayer(request):
 
     context = {
         
@@ -22,12 +47,20 @@ def register(request):
 
 
 def login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
-    context = {
-        
-    }
+        user = authenticate(request, username=username, password=password)
 
-    return render(request, 'app/index.html', context)
+        if user is not None:
+            login(request, user)
+            return redirect('index')
+
+        else:
+            messages.info(request, 'Username or Password is incorrect')
+
+    return render(request, 'app/login.html')
 
 
 def viewTurfs(request):
