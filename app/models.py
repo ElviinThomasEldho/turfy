@@ -16,8 +16,26 @@ class Player(models.Model):
 
     def __str__(self):
         return str(self.id) + " | " + self.firstName + " " + self.lastName 
+
+
+class Payment(models.Model):
+
+    player = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    turf = models.ForeignKey(Turf, null=True, on_delete=models.SET_NULL)
     
+    
+    mode
+
+
+
+
+
+
 class Turf(models.Model):
+    TYPE =  (
+        ('5s','5s'),
+        ('7s','7s')
+    )
     user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
 
     ownerName = models.CharField("First Name", max_length=25, null=True)
@@ -25,10 +43,8 @@ class Turf(models.Model):
     location = models.CharField("Location ", max_length=200, null=True)
     phoneNumber = models.CharField("Phone Number", max_length=25, null=True)
     pricePerSlot = models.FloatField("Price Per Slot", max_length=3, null=True)
-    TYPE =  (
-        ('5s',''),
-        ('7s','female')
-    )
+    fieldSize = models.CharField("fieldSize",max_length=3,choices=TYPE )
+    
     
     def __str__(self):
         return str(self.id) + " | " + self.turfName + " | " + self.ownerName 
