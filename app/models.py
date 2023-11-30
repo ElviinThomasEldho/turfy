@@ -61,6 +61,7 @@ class Booking(models.Model):
 
 
 class Payment(models.Model):
+    
     MODE =(
         ("UPI","UPI")
         ("Cash","Cash")
