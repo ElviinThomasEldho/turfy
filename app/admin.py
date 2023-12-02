@@ -3,3 +3,8 @@ from .models import *
 
 # Register your models here.
 admin.site.register(Player)
+admin.site.register(Day)
+admin.site.register(TimeSlot)
+admin.site.register(Turf)
+admin.site.register(Booking)
+admin.site.register(Payment)

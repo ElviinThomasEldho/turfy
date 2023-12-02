@@ -26,16 +26,31 @@ class RegisterForm(UserCreationForm):
             'password2' : forms.PasswordInput(),
         }
 
-class RegisterForm(UserCreationForm):
+class PlayerForm(ModelForm):
     class Meta:
-        model = User
-        fields = ['username','email','first_name','last_name','password1','password2']
+        model = Player
+        exclude = ['user','firstName','lastName','email','dateCreated']
 
-        widgets = {     
-            'username' : forms.TextInput(),
-            'email' : forms.EmailInput(),
-            'first_name' : forms.TextInput(),
-            'last_name' : forms.TextInput(),
-            'password1' : forms.PasswordInput(),
-            'password2' : forms.PasswordInput(),
-        }
+
+class BookingForm(ModelForm):
+    class Meta:
+        model = Booking
+        exclude = ['player','turf']
+
+
+class PaymentForm(ModelForm):
+    class Meta:
+        model = Payment
+        exclude = ['mode','screenshot']
+        
+
+class TurfForm(ModelForm):
+    class Meta:
+        model = Turf
+        exclude = ['user','dateCreated','slots']
+
+
+class TimeSlotForm(ModelForm):
+    class Meta:
+        model = TimeSlot
+        fields = "__all__"

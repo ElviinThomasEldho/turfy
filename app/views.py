@@ -32,8 +32,8 @@ def register(request):
             user = authenticate(request, username=username, password=password)
 
             if user is not None:
-                login(request, user)
-                return redirect('profile')
+                login(user)
+                return redirect('chooseUser')
 
     context = {
         'form': form,
@@ -41,9 +41,16 @@ def register(request):
 
     return render(request, 'app/register.html', context)
 
-def createPlayer(request):
+
+def chooseUser(request):
+    context = {
+    }
+
+    return render(request, 'app/chooseUser.html', context)
+
+def registerPlayer(request):
     user = request.user
-    form = PlayerForm(initial={'user': request.user.id})
+    form = PlayerForm()
 
     if (Player.objects.filter(user=user).exists()):
             return redirect('profile')
@@ -67,24 +74,33 @@ def createPlayer(request):
             'form': form,
         }
 
-        return render(request, 'app/createPlayer.html', context)
+        return render(request, 'app/registerPlayer.html', context)
 
 
-def login(request):
+def loginUser(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-
+        username = request.POST["username"]
+        password = request.POST["password"]
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
             login(request, user)
-            return redirect('index')
+            return redirect('chooseUser')
 
         else:
             messages.info(request, 'Username or Password is incorrect')
 
     return render(request, 'app/login.html')
+
+
+def playerProfile(request):
+    player = Player.objects.get(user=request.user)
+
+    context = {
+        'player':player,
+    }
+
+    return render(request, 'app/playerProfile.html', context)
 
 
 def searchTurfs(request):
@@ -94,7 +110,7 @@ def searchTurfs(request):
         'turfs':turfs,
     }
 
-    return render(request, 'app/index.html', context)
+    return render(request, 'app/searchTurf.html', context)
 
 
 def viewTurf(request, pk):
@@ -104,11 +120,11 @@ def viewTurf(request, pk):
         'turf':turf,        
     }
 
-    return render(request, 'app/index.html', context)
+    return render(request, 'app/viewTurf.html', context)
 
 
 def createBooking(request, pk):
-    form = BookingForm(initial={'user': request.user.id})
+    form = BookingForm()
 
     if request.method == 'POST':
         form = BookingForm(request.POST, request.FILES)
@@ -124,13 +140,13 @@ def createBooking(request, pk):
 
 
 def completePayment(request, pk):
-    form = PaymentForm(initial={'user': request.user.id})
+    form = PaymentForm()
 
     if request.method == 'POST':
         form = PaymentForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('profile')
+            return redirect('playerProfile')
 
     context = {
         'form': form,
@@ -167,14 +183,20 @@ def registerTurf(request):
         return render(request, 'app/registerTurf.html', context)
 
 
-def viewTurfProfile(request):
+def turfProfile(request):
     turf = Turf.objects.get(user=request.user)
+    bookings = Booking.objects.get(turf=turf)
+    payments = Payment.objects.get(turf=turf)
+    timeSlots = turf.timeSlots
 
     context = {
         'turf':turf,
+        'bookings':bookings,
+        'payments':payments,
+        'timeSlots':timeSlots,
     }
 
-    return render(request, 'app/viewTurfProfile.html', context)
+    return render(request, 'app/turfProfile.html', context)
 
 
 def editTurfProfile(request):
@@ -193,43 +215,7 @@ def editTurfProfile(request):
         'form': form,
     }
 
-    return render(request, 'trainee/edit.html', context)
-
-
-def viewBookings(request):
-    turf = Turf.objects.get
-    bookings = Booking.objects.filter(turf)
-
-    context = {
-        "turf":turf,    
-        "bookings":bookings,          
-    }
-
-    return render(request, 'app/index.html', context)
-
-
-def viewPayment(request, pk):
-    turf = Turf.objects.get(user=request.user)
-    payment = Payment.objects.get(id=pk)
-
-    context = {
-        "turf":turf,
-        "payment":payment,
-    }
-
-    return render(request, 'app/index.html', context)
-
-
-def viewTimeSlots(request):
-    turf = Turf.objects.get(user=request.user)
-    slots = TimeSlot.objects.filter(turf=turf)
-
-    context = {
-        "turf":turf,
-        "slots":slots,        
-    }
-
-    return render(request, 'app/index.html', context)
+    return render(request, 'app/editTurfProfile.html', context)
 
 
 def addTimeSlot(request):
