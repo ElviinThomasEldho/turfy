@@ -1,15 +1,12 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-
-    <title>Turfy</title>    
+    <title>Turfy</title>
 </head>
 <body>
-    <h1>Turfy</h1>
+    <a href="{% url 'registerPlayer' %}">Book a Turf</a>
+    <a href="{% url 'registerTurf' %}">Register as a Turf</a>
 </body>
 </html>
