@@ -18,10 +18,14 @@
         <label for="password">Password</label>
         <input type="password" name="password">
         <button type="submit">Login</button>
-        <input type="checkbox">Remember Me
+        <input type="checkbox">Remember Me</input>
     </form>
+    {{ form.errors }}
+    {% for message in messages %}
+    <p>{{message}}</p><br>
+    {% endfor %}
     <a href="#">Forgot Password?</a>
-    <a href="#">New to Turfy?</a>
-    <button>Signup with Google</button>
+    <a href="{% url 'register' %}">New to Turfy?</a>
+    <!-- <button>Signup with Google</button> -->
 </body>
 </html>

@@ -32,7 +32,7 @@ def register(request):
             user = authenticate(request, username=username, password=password)
 
             if user is not None:
-                login(user)
+                login(request, user)
                 return redirect('chooseUser')
 
     context = {
@@ -53,22 +53,21 @@ def registerPlayer(request):
     form = PlayerForm()
 
     if (Player.objects.filter(user=user).exists()):
-            return redirect('profile')
+            return redirect('playerProfile')
     else:
         if request.method == 'POST':
             form = PlayerForm(request.POST, request.FILES)
             if form.is_valid():
-                form.save()
-
-                player = Player.objects.get(user=request.user)
+                player = form.save()
+                player.user = user
                 player.firstName = user.first_name
                 player.lastName = user.last_name
                 player.emailID = user.email
                 player.save()
 
-                add_group = Group.objects.get(name='player')
+                add_group = Group.objects.get(name='Player')
                 add_group.user_set.add(request.user)
-                return redirect('profile')
+                return redirect('playerProfile')
 
         context = {
             'form': form,
@@ -158,7 +157,7 @@ def completePayment(request, pk):
 def cancelBooking(request, pk):
     booking = Booking.objects.get(id=pk)
     booking.delete()
-    redirect('profile')
+    redirect('playerProfile')
 
 #TURF VIEWS
 def registerTurf(request):
@@ -166,7 +165,7 @@ def registerTurf(request):
     form = TurfForm(initial={'user': request.user.id})
 
     if (Turf.objects.filter(user=user).exists()):
-            return redirect('profile')
+            return redirect('turfProfile')
     else:
         if request.method == 'POST':
             form = TurfForm(request.POST, request.FILES)

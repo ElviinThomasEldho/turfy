@@ -10,18 +10,19 @@
     <title>Turfy | Register</title>
 </head>
 <body>
-    <h1>Register</h1>
+    <h1>Register as a Player</h1>
     <form action="" method="POST">
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username" placeholder="Username">
-        <label for="email">Email Address</label>
-        <input type="email" name="email" id="email" placeholder="Email ID">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" placeholder="Password">
-        <label for="password">Confirm Password</label>
-        <input type="password" name="password" id="password" placeholder="Confirm Password">
+        {% csrf_token %}
+        {{form.mobile.label}}
+        {{form.mobile}}
+        {{form.dateOfBirth.label}}
+        {{form.dateOfBirth}}
         <button type="submit">Register</button>
     </form>
+    {{ form.errors }}
+    {% for message in messages %}
+    <p>{{message}}</p><br>
+    {% endfor %}
     <a href="#">Already have a user?</a>
     <button class="login">Login</button>
 </body>

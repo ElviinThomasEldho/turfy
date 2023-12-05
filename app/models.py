@@ -11,11 +11,11 @@ class Player(models.Model):
     email = models.EmailField("Email Address", null=True)
     dateOfBirth = models.DateField("Date of Birth", null=True)
 
-    dateCreated = models.DateTimeField("Date Created", auto_created=True)
+    dateCreated = models.DateTimeField("Date Created", auto_now_add=True)
     # friends = models.ManyToManyField(self, blank=True,  null=True)
 
     def __str__(self):
-        return str(self.id) + " | " + self.firstName + " " + self.lastName 
+        return str(self.id) + " | " + str(self.firstName) + " " + str(self.lastName) 
     
     
 class Day(models.Model):
