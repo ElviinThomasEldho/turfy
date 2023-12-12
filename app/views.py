@@ -135,7 +135,7 @@ def createBooking(request, pk):
         'form': form,
     }
 
-    return render(request, 'app/createBooking.html', context)
+    return render(request, 'app/bookTurf.html', context)
 
 
 def completePayment(request, pk):
@@ -170,10 +170,12 @@ def registerTurf(request):
         if request.method == 'POST':
             form = TurfForm(request.POST, request.FILES)
             if form.is_valid():
-                form.save()
-                add_group = Group.objects.get(name='turf')
+                turf = form.save()
+                turf.user = request.user
+                turf.save()
+                add_group = Group.objects.get(name='Turf')
                 add_group.user_set.add(request.user)
-                return redirect('viewTurfProfile')
+                return redirect('turfProfile')
 
         context = {
             'form': form,
@@ -184,15 +186,15 @@ def registerTurf(request):
 
 def turfProfile(request):
     turf = Turf.objects.get(user=request.user)
-    bookings = Booking.objects.get(turf=turf)
-    payments = Payment.objects.get(turf=turf)
-    timeSlots = turf.timeSlots
+    bookings = Booking.objects.filter(turf=turf)
+    payments = Payment.objects.filter(turf=turf)
+    slots = turf.slots
 
     context = {
         'turf':turf,
         'bookings':bookings,
         'payments':payments,
-        'timeSlots':timeSlots,
+        'slots':slots,
     }
 
     return render(request, 'app/turfProfile.html', context)

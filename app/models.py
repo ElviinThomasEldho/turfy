@@ -53,10 +53,10 @@ class Turf(models.Model):
     location = models.CharField("Location ", max_length=200, null=True)
     phoneNumber = models.CharField("Phone Number", max_length=25, null=True)
     pricePerSlot = models.FloatField("Price Per Slot", max_length=3, null=True)
-    fieldSize = models.CharField("fieldSize",max_length=3,choices=TYPE )
+    fieldSize = models.CharField("fieldSize",max_length=3,choices=TYPE, null=False, default="5s")
     slots = models.ManyToManyField(TimeSlot, blank=True) 
     
-    dateCreated = models.DateTimeField("Date Created", auto_created=True)
+    dateCreated = models.DateTimeField("Date Created", auto_now_add=True)
 
     def __str__(self):
         return str(self.id) + " | " + self.turfName + " | " + self.ownerName 
