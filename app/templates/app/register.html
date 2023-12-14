@@ -27,7 +27,11 @@
         <input type="password" name="password2" id="password2" placeholder="Confirm Password">
         <button type="submit">Register</button>
     </form>
+    {{form.errors}}
+    {% for message in messages %}
+    <p>{{message}}</p><br>
+    {% endfor %}
     <a href="#">Already registered?</a>
-    <a href="{% url 'login' %}" class="login">Login</a>
+    <a href="{% url 'loginUser' %}" class="login">Login</a>
 </body>
 </html>

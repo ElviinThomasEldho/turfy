@@ -12,17 +12,24 @@
 <body>
     <h1>Register</h1>
     <form action="" method="POST">
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username" placeholder="Username">
-        <label for="email">Email Address</label>
-        <input type="email" name="email" id="email" placeholder="Email ID">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" placeholder="Password">
-        <label for="password">Confirm Password</label>
-        <input type="password" name="password" id="password" placeholder="Confirm Password">
+        {% csrf_token %}
+        {{form.ownerName.label}}
+        {{form.ownerName}}
+        {{form.turfName.label}}
+        {{form.turfName}}
+        {{form.location.label}}
+        {{form.location}}
+        {{form.phoneNumber.label}}
+        {{form.phoneNumber}}
+        {{form.pricePerSlot.label}}
+        {{form.pricePerSlot}}
+        {{form.fieldSize.label}}
+        {{form.fieldSize}}
         <button type="submit">Register</button>
+        {{ form.errors }}
+        {% for message in messages %}
+        <p>{{message}}</p><br>
+        {% endfor %}
     </form>
-    <a href="#">Already have a user?</a>
-    <button class="login">Login</button>
 </body>
 </html>

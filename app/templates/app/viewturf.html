@@ -19,16 +19,17 @@
     <div style="margin-top: 50px;"></div>
     <button style="display: block;">back</button>
     <div style="height: 300px;width: 1fr;background-color: blue;"><img src="#" alt="image of place"></div>
-    <h1>Name of Turf</h1>
+    <h1>{{turf.turfName}}</h1>
     <div style="border: solid;border-color: black;border-width: 3px;"> <p>description about place</p>
-        <p>destination</p>
-        <p>distance from you</p>
-        <p>user ratings</p>
-        <p>cost</p>
+        <p>{{turf.location}}</p>
+        <p>{{turf.size}}</p>
+        <p>{{turf.phoneNumber}}</p>
+        <p>{{turf.fieldSize}}</p>
+        <p>{{turf.pricePerSlot}}</p>
         <p>time slots available</p>
     </div>
     <div style="border: solid;border-width: 3px;border-color: black; display: flex;justify-content: space-between;">
-        <button>Book Turf</button>
+        <a href="{% url 'createBooking' turf.id %}">Book Turf</a>
         <button>add to fav</button>
     </div>
     <p>reviews</p>

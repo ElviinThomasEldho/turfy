@@ -31,6 +31,10 @@ class PlayerForm(ModelForm):
         model = Player
         exclude = ['user','firstName','lastName','email','dateCreated']
 
+        widgets = {
+            'dateOfBirth' : DateInput()
+        }
+
 
 class BookingForm(ModelForm):
     class Meta:
