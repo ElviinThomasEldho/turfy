@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="padding-bottom: 1000px;">
+    <div class="navbar" style="background-color: lightblue;position: fixed;height: 50px;top: 0px;left:0px;right: 0;margin-bottom: 50px;display: flex;justify-content: space-between;">
+        <div style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-weight: bold;font-size: medium;display: flex;justify-content: center;">Turfy</div>
+        <div style="display: flex;flex-direction: row;justify-content: space-between;">
+            <div style="margin-left: 15px;margin-right: 15px;">Home</div>
+            <div style="margin-left: 15px;margin-right: 15px;">About</div>
+            <div style="margin-left: 15px;margin-right: 15px;">Contact Us</div>
+
+        </div>
+
+    </div>
+    <div style="margin-top: 50px;"></div>
+    <button style="display: block;">back</button>
+    <div style="height: 300px;width: 1fr;background-color: blue;"><img src="#" alt="image of place">
+        <button>ADD PHOTOS</button>    
+    </div>
+    <form action="" method="POST" style="padding-top: 10px;">
+    
+    <label for="turfName">turfName</label>
+    <input type="text" name="turfName">
+    
+    <div style="border: solid;border-color: black;border-width: 3px;"> <p>description about place</p>
+        <p>{{turf.location}}</p>
+        <p>{{turf.size}}</p>
+        <p>{{turf.phoneNumber}}</p>
+        <p>{{turf.fieldSize}}</p>
+        <p>{{turf.pricePerSlot}}</p>
+        <p>time slots available</p>
+    </div>
+
+    </form>
+    <div style="border: solid;border-width: 3px;border-color: black; display: flex;justify-content: space-between;">
+        <a href="{% url 'createBooking' turf.id %}">Book Turf</a>
+        <button>add to fav</button>
+    </div>
+    <p>reviews</p>
+    
+</body>
+</html>
