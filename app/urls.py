@@ -5,6 +5,7 @@ urlpatterns = [
     # User Views
     path('', views.index, name='index'),
     path('login/', views.loginUser, name='loginUser'),
+    path('logout/', views.logoutUser, name='logoutUser'),
     path('register/', views.register, name='register'),
     path('choose-user/', views.chooseUser, name='chooseUser'),
     path('register-player/', views.registerPlayer, name='registerPlayer'),

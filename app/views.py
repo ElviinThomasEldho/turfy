@@ -84,12 +84,27 @@ def loginUser(request):
 
         if user is not None:
             login(request, user)
-            return redirect('chooseUser')
+            print(user, request.user.groups, request.user.groups.exists())
+            if request.user.groups.exists(): 
+                groups = set(group.name for group in request.user.groups.all())
+                for group in groups:
+                    print(group)
+                    if group == "Turf":
+                        return redirect('turfProfile')
+                    elif group == "Player":
+                        return redirect('playerProfile')
+            else:
+                return redirect('chooseUser')
 
         else:
             messages.info(request, 'Username or Password is incorrect')
 
     return render(request, 'app/login.html')
+
+
+def logoutUser(request):
+    logout(request)
+    return redirect('loginUser')
 
 
 def playerProfile(request):
@@ -209,7 +224,7 @@ def editTurfProfile(request):
         form = TurfForm(request.POST, request.FILES, instance=turf)
         if form.is_valid():
             form.save()
-            return redirect('viewTurfProfile')
+            return redirect('turfProfile')
 
     context = {
         'turf': turf,
@@ -226,16 +241,16 @@ def addTimeSlot(request):
     if request.method == 'POST':
         form = TimeSlotForm(request.POST)
         if form.is_valid():
-            form.save()
+            slot = form.save()
             add_group = Group.objects.get(name='turf')
             add_group.user_set.add(request.user)
-            return redirect('viewTurfProfile')
+            return redirect('turfProfile')
 
     context = {
         'form': form,
     }
 
-    return render(request, 'app/registerTurf.html', context)
+    return render(request, 'app/addTimeSlots.html', context)
 
 
 def editTimeSlot(request, pk):
@@ -244,7 +259,7 @@ def editTimeSlot(request, pk):
         
     }
 
-    return render(request, 'app/index.html', context)
+    return render(request, 'app/editTimeSlots.html', context)
 
 
 def deleteTimeSlot(request, pk):
