@@ -1,4 +1,4 @@
-{% load static %}
+--{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,27 +9,55 @@
 
     <title>Turfy | Register</title>
 </head>
-<body>
-    <h1>Register</h1>
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{form.ownerName.label}}
-        {{form.ownerName}}
-        {{form.turfName.label}}
-        {{form.turfName}}
-        {{form.location.label}}
-        {{form.location}}
-        {{form.phoneNumber.label}}
-        {{form.phoneNumber}}
-        {{form.pricePerSlot.label}}
-        {{form.pricePerSlot}}
-        {{form.fieldSize.label}}
-        {{form.fieldSize}}
-        <button type="submit">Register</button>
-        {{ form.errors }}
-        {% for message in messages %}
-        <p>{{message}}</p><br>
-        {% endfor %}
+<body class="body">
+    <div class="header-div">
+        <div class="turfy-name">
+            <h2 style="font-weight: bold;color: white;margin-left: 30px;">TURFY</h2>      
+        </div>
+        <DIV class="register-login-div">
+            <p style="color: grey;margin-right: 20px;">Already a User?</p>
+            <button class="login-button">Login</button>
+        </DIV>
+    </div>
+    
+    <link rel="stylesheet" href="styles.css">
+    <p class="player-heading">Turf</h1>
+    <p class="Registration-heading" >Registration</h1>
+    <hr style="width: 700px;color: grey;margin-left: 130px;margin-top: 0px;padding-top: 0;margin-bottom: 3%;">
+    <form action="" method="POST" class="form">
+        <div class="main-form">
+            <div class="left-form">
+                <label for="owner-name"></label>
+                <input type="text" name="username" id="username" placeholder="Owner name" class="input-field" >
+                <br>
+                <label for="turf-name"></label>
+                <input type="text" name="turf-name" id="turf-name" placeholder="Turf Name"class="input-field">
+                <br>
+                <label for="Location"></label>
+                <input type="text" name="Location" id="Location" placeholder="Location"class="input-field">
+                <br>
+            </div>
+            <div class="right-form">
+                <label for="Price-slot"></label>
+                <input type="number" name="Price-slot" id="Price per slot" placeholder="Player Email ID"class="input-field">
+                <br>
+                <label for="phone-num"></label>
+                <input type="number" name="phone-num" id="phone-num" placeholder="Phone Number"class="input-field">
+                <br>
+                <label for="password"></label>
+                <input type="password" name="password" id="password" placeholder="Password"class="input-field">
+                <br>
+                
+            </div>
+        </div>
+        <button class="register-button">Register</button>
+       
+        
     </form>
+    {{form.errors}}
+    {% for message in messages %}
+    <p>{{message}}</p><br>
+    {% endfor %}
+    
 </body>
 </html>
