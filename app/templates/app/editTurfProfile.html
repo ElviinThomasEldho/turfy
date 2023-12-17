@@ -19,26 +19,35 @@
     <div style="height: 300px;width: 1fr;background-color: blue;"><img src="#" alt="image of place">
         <button>ADD PHOTOS</button>    
     </div>
-    <form action="" method="POST" style="padding-top: 10px;">
+    <form action="" method="POST" style="padding-top: 10px; padding-bottom: 10px;">
     
     <label for="turfName">turfName</label>
     <input type="text" name="turfName">
     
-    <div style="border: solid;border-color: black;border-width: 3px;"> <p>description about place</p>
-        <p>{{turf.location}}</p>
-        <p>{{turf.size}}</p>
-        <p>{{turf.phoneNumber}}</p>
-        <p>{{turf.fieldSize}}</p>
-        <p>{{turf.pricePerSlot}}</p>
-        <p>time slots available</p>
+    <div style="border: solid;border-color: black;border-width: 3px;"> 
+        <label for="description">description</label>
+        <input type="text" name="description">
+        <br>
+        <label for="turfLocation">turfLocation</label>
+        <input type="text" name="turfLocation">
+        <br>
+        <label for="turfSize">turfSize</label>
+        <select name="turfSize" id="turfSize">
+            <option value="5s">5s</option>
+            <option value="7s">7s</option>
+        </select>
+        <br>
+        <label for="PhoneNumber">PhoneNumber</label>
+        <input type="text" name="PhoneNumber">
+        <br>
+        <label for="Price">Price</label>
+        <input type="number" name="Price">
+        <br>
+        
     </div>
 
     </form>
-    <div style="border: solid;border-width: 3px;border-color: black; display: flex;justify-content: space-between;">
-        <a href="{% url 'createBooking' turf.id %}">Book Turf</a>
-        <button>add to fav</button>
-    </div>
-    <p>reviews</p>
+    
     
 </body>
 </html>
