@@ -1,4 +1,4 @@
-{% load static %}
+--{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,21 +9,55 @@
 
     <title>Turfy | Register</title>
 </head>
-<body>
-    <h1>Register as a Player</h1>
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{form.mobile.label}}
-        {{form.mobile}}
-        {{form.dateOfBirth.label}}
-        {{form.dateOfBirth}}
-        <button type="submit">Register</button>
+<body class="body">
+    <div class="header-div">
+        <div class="turfy-name">
+            <h2 style="font-weight: bold;color: white;margin-left: 30px;">TURFY</h2>      
+        </div>
+        <DIV class="register-login-div">
+            <p style="color: grey;margin-right: 20px;">Already a User?</p>
+            <button class="login-button">Login</button>
+        </DIV>
+    </div>
+    
+    <link rel="stylesheet" href="styles.css">
+    <p class="player-heading">Player</h1>
+    <p class="Register-heading" >Register</h1>
+    <hr style="width: 700px;color: grey;margin-left: 130px;margin-top: 0px;padding-top: 0;margin-bottom: 3%;">
+    <form action="" method="POST" class="form">
+        <div class="main-form">
+            <div class="left-form">
+                <label for="username"></label>
+                <input type="text" name="username" id="username" placeholder="Player Username" class="input-field" >
+                <br>
+                <label for="first_name"></label>
+                <input type="text" name="first_name" id="first_name" placeholder="Player First Name"class="input-field">
+                <br>
+                <label for="last_name"></label>
+                <input type="text" name="last_name" id="last_name" placeholder="Player Last Name"class="input-field">
+                <br>
+            </div>
+            <div class="right-form">
+                <label for="email"></label>
+                <input type="email" name="email" id="email" placeholder="Player Email ID"class="input-field">
+                <br>
+                <label for="password1"></label>
+                <input type="password" name="password1" id="password1" placeholder="Password"class="input-field">
+                <br>
+                <label for="password2"></label>
+                <input type="password" name="password2" id="password2" placeholder="Confirm Password"class="input-field">
+                <br>
+                
+            </div>
+        </div>
+        <button class="register-button">Register</button>
+       
+        
     </form>
-    {{ form.errors }}
+    {{form.errors}}
     {% for message in messages %}
     <p>{{message}}</p><br>
     {% endfor %}
-    <a href="#">Already have a user?</a>
-    <button class="login">Login</button>
+    
 </body>
 </html>

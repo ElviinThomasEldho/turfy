@@ -1,4 +1,4 @@
-{% load static %}
+--{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,29 +9,32 @@
 
     <title>Turfy | Register</title>
 </head>
-<body>
-    <h1>Register</h1>
-    <form action="" method="POST">
-        {% csrf_token %}
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username" placeholder="Username">
-        <label for="first_name">First Name</label>
-        <input type="text" name="first_name" id="first_name" placeholder="First Name">
-        <label for="last_name">Last Name</label>
-        <input type="text" name="last_name" id="last_name" placeholder="Last Name">
-        <label for="email">Email Address</label>
-        <input type="email" name="email" id="email" placeholder="Email ID">
-        <label for="password1">Password</label>
-        <input type="password" name="password1" id="password1" placeholder="Password">
-        <label for="password2">Confirm Password</label>
-        <input type="password" name="password2" id="password2" placeholder="Confirm Password">
-        <button type="submit">Register</button>
-    </form>
-    {{form.errors}}
-    {% for message in messages %}
-    <p>{{message}}</p><br>
-    {% endfor %}
-    <a href="#">Already registered?</a>
-    <a href="{% url 'loginUser' %}" class="login">Login</a>
+
+</div>
+<body class="body">
+    <link rel="stylesheet" href="styles.css">
+    <div class="header-div">
+        <div class="turfy-name">
+            <h2 style="font-weight: bold;color: white;margin-left: 30px;">TURFY</h2>      
+        </div>
+        <DIV class="register-login-div">
+            <p style="color: grey;margin-right: 20px;">Already a User?</p>
+            <button class="login-button">Login</button>
+        </DIV>
+    </div>
+    <div class="main-register-div">
+        <div class="player-div">
+            <p class="main-register-text1">Player</p>
+            <p class="main-register-text2">Registration</p>
+            <button class="main-register-button">Register</button>
+            
+        </div>
+        <div class="vertical-line"></div>
+        <div class="owner-div">
+            <p class="owner-register-text1">Owner</p>
+            <p class="owner-register-text2">Registration</p>
+            <button class="main-register-button">Register</button>
+        </div>
+    </div>
 </body>
 </html>
