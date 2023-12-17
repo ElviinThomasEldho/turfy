@@ -5,27 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+   <link rel="stylesheet" href="{% static 'css/styles.css' %}"> 
 
     <title>Turfy | Login</title>
 </head>
-<body>
-    <h1>Login</h1>
+<body class="body">
+    <link rel="stylesheet" href="styles.css">
+    <div class="header-div">
+        <div class="turfy-name">
+            <h2 style="font-weight: bold;color: white;margin-left: 30px;">TURFY</h2>      
+        </div>
+    </div>
+    <p class="login-text">Login</p>
+    <hr style="color: grey;width: 300px;">
     <form action="" method="POST">
         {% csrf_token %}
-        <label for="username">Username</label>
-        <input type="text" name="username">
-        <label for="password">Password</label>
-        <input type="password" name="password">
-        <button type="submit">Login</button>
-        <input type="checkbox">Remember Me</input>
+        <br>
+        <label for="username"></label>
+        <input type="text" name="username" placeholder="Username" class="login-input-field">
+        <br>
+        <label for="password"></label>
+        <input type="password" name="password" placeholder="Password" class="login-input-field">
+        <br>
+        <input type="checkbox" id="login-checkbox" style="margin-left: 44%;"></input>
+        <label for="login-checkbox" class="login-checkbox">Remember Me</label><br>
+        <button type="submit" class="login-login-button">Login</button>
     </form>
     {{ form.errors }}
     {% for message in messages %}
     <p>{{message}}</p><br>
     {% endfor %}
     <!-- <a href="#">Forgot Password?</a> -->
-    <a href="{% url 'register' %}">New to Turfy?</a>
+    <a href="{% url 'register' %}" style="margin-left:42%;margin-top: 0;padding-top: 0;">New to Turfy?</a>
     <!-- <button>Signup with Google</button> -->
 </body>
 </html>
