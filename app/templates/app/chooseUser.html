@@ -1,29 +1,19 @@
 {% extends 'app/main.html' %} {% load static %} {% block title %}
 <title>Turfy | Login</title>
 {% endblock %} {% block content %}
-<link rel="stylesheet" href="styles.css" />
-<div class="header-div">
-  <div class="turfy-name">
-    <h2 style="font-weight: bold; color: white; margin-left: 30px">TURFY</h2>
-  </div>
-  <div class="register-login-div">
-    <p style="color: grey; margin-right: 20px">Already a User?</p>
-    <a class="login-button" href="{% url 'loginUser' %}">Login</a>
-  </div>
-</div>
+
 <div class="main-register-div">
   <div class="player-div">
-    <p class="main-register-text1">Player</p>
-    <p class="main-register-text2">Registration</p>
-    <a class="main-register-button" href="{% url 'registerPlayer' %}"
+    <p class="player-register-text1">Player</p>
+    <p class="player-register-text2">Registration</p>
+    <a class="player-register-button" href="{% url 'registerPlayer' %}"
       >Register</a
     >
   </div>
-  <div class="vertical-line"></div>
   <div class="owner-div">
-    <p class="owner-register-text1">Owner</p>
+    <p class="owner-register-text1">Turf</p>
     <p class="owner-register-text2">Registration</p>
-    <a class="main-register-button" href="{% url 'registerTurf' %}">Register</a>
+    <a class="owner-register-button" href="{% url 'registerTurf' %}">Register</a>
   </div>
 </div>
 {% endblock %}
