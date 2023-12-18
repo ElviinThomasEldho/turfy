@@ -109,9 +109,11 @@ def logoutUser(request):
 
 def playerProfile(request):
     player = Player.objects.get(user=request.user)
+    bookings = Booking.objects.filter(player=player)
 
     context = {
         'player':player,
+        'bookings':bookings,
     }
 
     return render(request, 'app/playerProfile.html', context)
@@ -139,12 +141,17 @@ def viewTurf(request, pk):
 
 def createBooking(request, pk):
     form = BookingForm()
+    player = Player.objects.get(user = request.user)
+    turf = Turf.objects.get(id=pk)
 
     if request.method == 'POST':
         form = BookingForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            return redirect('completePayment')
+            booking = form.save()
+            booking.player = player
+            booking.turf = turf
+            booking.save()
+            return redirect('/complete-payment/'+str(booking.id)+'/')
 
     context = {
         'form': form,
@@ -203,7 +210,8 @@ def turfProfile(request):
     turf = Turf.objects.get(user=request.user)
     bookings = Booking.objects.filter(turf=turf)
     payments = Payment.objects.filter(turf=turf)
-    slots = turf.slots
+    slots = turf.slots.all()
+    print(slots)
 
     context = {
         'turf':turf,

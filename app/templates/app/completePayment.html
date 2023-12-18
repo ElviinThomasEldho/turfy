@@ -19,12 +19,12 @@
             photo
         </div>
         <div class="info" style="border: solid;border-color: grey;height: 300px;width: 200px; margin-top: 60px;" >
-            <form action="" method="POST">
+            <form action="" method="POST" enctype="multipart/form-data">
                 {%  csrf_token %}
-                <label for="timeSlot">Time Slot</label><br>
-                {{form.timeSlot}}<br>
-                <label for="date">Date</label><br>
-                {{form.date}}<br>
+                <label for="mode">Mode of Payment</label><br>
+                {{form.mode}}<br>
+                <label for="screenshot">Payment Screenshot</label><br>
+                {{form.screenshot}}<br>
                 {{form.errors}}
                 <button type="submit">Book</button>
             </form>

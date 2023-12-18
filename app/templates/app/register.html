@@ -1,4 +1,4 @@
---{% load static %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,30 +11,52 @@
 </head>
 
 </div>
-<body class="body">
-    <link rel="stylesheet" href="styles.css">
-    <div class="header-div">
-        <div class="turfy-name">
-            <h2 style="font-weight: bold;color: white;margin-left: 30px;">TURFY</h2>      
+<body>
+    <form method="POST" action="" class="col text-center">
+        {% csrf_token %}
+        <h2 class="section-heading">Register</h2>
+        <hr class="hr-short">
+    
+        <div class="row">
+            <div class="col">
+                <label>{{form.username.label}}</label><br>
+                {{form.username}}
+            </div>
+            <div class="col">
+                <label>{{form.email.label}}</label><br>
+                {{form.email}}
+            </div>
         </div>
-        <DIV class="register-login-div">
-            <p style="color: grey;margin-right: 20px;">Already a User?</p>
-            <button class="login-button">Login</button>
-        </DIV>
-    </div>
-    <div class="main-register-div">
-        <div class="player-div">
-            <p class="main-register-text1">Player</p>
-            <p class="main-register-text2">Registration</p>
-            <button class="main-register-button">Register</button>
-            
+    
+        <div class="row">
+            <div class="col">
+                <label>{{form.first_name.label}}</label><br>
+                {{form.first_name}}
+            </div>
+            <div class="col">
+                <label>{{form.last_name.label}}</label><br>
+                {{form.last_name}}
+            </div>
         </div>
-        <div class="vertical-line"></div>
-        <div class="owner-div">
-            <p class="owner-register-text1">Owner</p>
-            <p class="owner-register-text2">Registration</p>
-            <button class="main-register-button">Register</button>
+        <div class="row">
+            <div class="col">
+                <label>{{form.password1.label}}</label><br>
+                {{form.password1}}
+            </div>
+            <div class="col">
+                <label>{{form.password2.label}}</label><br>
+                {{form.password2}}
+            </div>
         </div>
-    </div>
+    
+        {{ form.errors }}
+    
+        {% for message in messages %}
+        <p>{{message}}</p><br>
+        {% endfor %}
+    
+        <button class="btn btn-success" type="submit" name="Submit">Register</button>
+    </form>
+    <a href="{% url 'registerUser' %}">Already Registered?</a>
 </body>
 </html>

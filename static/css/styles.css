@@ -2,3 +2,188 @@
     padding: 0;
     margin: 0;
 }
+
+body{
+    background-color:black; 
+    color: white;
+}
+
+.header-div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.turfy-name{
+    display: flex;
+    justify-content: space-between;
+}
+
+.register-login-div{
+    display: flex;
+    justify-content: center;
+    margin-right: 10px;
+    align-items: center;
+
+}
+
+.player-heading{
+    margin-bottom: 0;
+    padding-bottom: 0;
+    padding-left: 450px;
+    color: white;
+    font-weight: 900;
+    font-size: 50px;
+}
+
+.register-heading{
+    margin-top: 0px;
+    margin-bottom: 1%;
+    padding-top: 0px;
+    padding-left: 440px;
+    color: white;
+    font-size: 50px;
+    font-weight: 900;
+
+}
+
+
+.login-button{
+    color: black;
+    height: 40px;
+    width: 75px;
+    margin-left: 10px;
+    border-radius: 20px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+
+}
+
+.form{
+    color: grey;
+}
+
+.input-field{
+    border-radius: 5px;
+    margin-bottom: 30px;
+    height: 50px;
+    width: 250px;
+    margin-left: 150px;
+    border-color: grey;
+    border-width: 2px;
+    background-color: transparent;
+    color: white;
+}
+
+.register-button{
+    height: 40px;
+    width: 650px;
+    margin-left: 150px;
+    border-radius: 30px;
+    border: none;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.main-form{
+    display: flex;
+    flex-direction: row;
+}
+
+.registration-heading{
+    margin-top: 0px;
+    margin-bottom: 1%;
+    padding-top: 0px;
+    padding-left: 380px;
+    color: white;
+    font-size: 50px;
+    font-weight: 900;
+}
+
+.main-register-div{
+    display: flex;
+    flex-direction: row;
+
+    height: 100px;
+    width: 100px;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.player-div{
+    height: 70%;
+    width: 700px;
+}
+
+.owner-div{
+
+    height: 70%;
+    width: 700px;
+}
+
+.main-register-text1{
+    color: white;
+    font-weight: 900;
+    font-size: 60px;
+    text-align: right;
+    margin-right: 150px;
+    margin-top: 140px;
+    margin-bottom: 20px;
+    padding-bottom: 0;
+}
+
+.main-register-text2{
+    color: white;
+    font-weight: 900;
+    font-size: 60px;
+    text-align: right;
+    margin-right: 150px;
+    margin-top: 0px;
+    padding-top: 0;
+}
+
+.main-register-button{
+    height: 40px;
+    width: 650px;
+    margin-left: 40px;
+    border-radius: 30px;
+    border: none;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.owner-register-text1{
+    color: white;
+    font-weight: 900;
+    font-size: 60px;
+    text-align: left;
+    margin-left: 150px;
+    margin-top: 140px;
+    margin-bottom: 20px;
+    padding-bottom: 0;
+}
+
+.owner-register-text2{
+    color: white;
+    font-weight: 900;
+    font-size: 60px;
+    text-align: left;
+    margin-left: 150px;
+    margin-top: 0px;
+    padding-top: 0;
+}
+
+
+.vertical-line{
+    border: solid;
+    border-color: white;
+    height: 400px;
+    width: 0;
+    margin-left: 50px;
+}

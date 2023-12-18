@@ -19,48 +19,22 @@
     </div>
     <br>
     <div style="display: flex;flex-direction: row; justify-content: space-between;">
+        {% for turf in turfs %}
         <div style="border-radius: 2px;border-color: grey;width: 400px;height: 300px;border: solid;display: flex;flex-direction: column;justify-content: space-between;">
             <div style="background-color: lightblue; height: 150px;">PICture of Turf</div>
             <div>
-                <p>Name of TURF</p>
+                <p>{{turf.turfName}}</p>
             </div>
             <div style="display: flex;vertical-align: top;">
-                <p>Vazhakala,Ernakulam</p>
+                <p>{{turf.location}}</p><br>
                 <p>13.2km from You</p>
             </div>
             <div style="background-color: lightpink;justify-content: right;display: flex;flex-direction: row;justify-content: space-between;">
-                <p>Price 300</p>
-                <button style>view Details </button>
+                <p>Price {{turf.pricePerSlot}}</p>
+                <a href="{% url 'viewTurf' turf.id %}">view Details </a>
             </div>
         </div>
-        <div style="border-radius: 2px;border-color: grey;width: 400px;height: 300px;border: solid;display: flex;flex-direction: column;justify-content: space-between;">
-            <div style="background-color: lightblue; height: 150px;">PICture of Turf</div>
-            <div>
-                <p>Name of TURF</p>
-            </div>
-            <div style="display: flex;vertical-align: top;">
-                <p>Vazhakala,Ernakulam</p>
-                <p>13.2km from You</p>
-            </div>
-            <div style="background-color: lightpink;justify-content: right;display: flex;flex-direction: row;justify-content: space-between;">
-                <p>Price 300</p>
-                <button style>view Details </button>
-            </div>
-        </div>
-        <div style="border-radius: 2px;border-color: grey;width: 400px;height: 300px;border: solid;display: flex;flex-direction: column;justify-content: space-between;">
-            <div style="background-color: lightblue; height: 150px;">PICture of Turf</div>
-            <div>
-                <p>Name of TURF</p>
-            </div>
-            <div style="display: flex;vertical-align: top;">
-                <p>Vazhakala,Ernakulam</p>
-                <p>13.2km from You</p>
-            </div>
-            <div style="background-color: lightpink;justify-content: right;display: flex;flex-direction: row;justify-content: space-between;">
-                <p>Price 300</p>
-                <button style>view Details </button>
-            </div>
-        </div>
+        {% endfor %}
     </div>
    
     

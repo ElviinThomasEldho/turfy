@@ -39,13 +39,17 @@ class PlayerForm(ModelForm):
 class BookingForm(ModelForm):
     class Meta:
         model = Booking
-        exclude = ['player','turf']
+        exclude = ['player','turf', 'dateCreated']
+
+        widgets = {
+            'date' : DateInput(),
+        }
 
 
 class PaymentForm(ModelForm):
     class Meta:
         model = Payment
-        exclude = ['mode','screenshot']
+        exclude = ['player','turf','booking','amount','dateCreated']
         
 
 class TurfForm(ModelForm):

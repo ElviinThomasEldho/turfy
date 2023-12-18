@@ -29,10 +29,43 @@
         <p>time slots available</p>
     </div>
     <div style="border: solid;border-width: 3px;border-color: black; display: flex;justify-content: space-between;">
-        <a href="{% url 'createBooking' turf.id %}">Book Turf</a>
-        <button>add to fav</button>
+        <!-- <a href="{% url 'createBooking' turf.id %}">Book Turf</a>
+        <button>add to fav</button> -->
     </div>
-    <p>reviews</p>
+    <h3>Bookings</h3>
+    <table>
+        <thead>
+            <th>Player</th>
+            <th>Time Slot</th>
+            <th>Date</th>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+            <td>{{booking.player.firstName}} {{booking.player.lastName}}</td>
+            <td>{{booking.timeSlot.startTime}} {{booking.timeSlot.startAMPM}} - {{booking.timeSlot.lastName}} {{booking.timeSlot.endAMPM}}</td>
+            <td>{{booking.date}}</td>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Time Slots</h3>
+    <table>
+        <thead>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Days</th>
+        </thead>
+        <tbody>
+            {% for slot in slots %}
+            <td>{{slot.startTime}} {{slot.startAMPM}}</td>
+            <td>{{slot.endTime}} {{slot.endAMPM}}</td>
+            <td>{% for day in slot.days.all %}
+                {{day.day}} 
+                {% endfor %}
+            </td>
+            {% endfor %}
+        </tbody>
+    </table>
     
 </body>
 </html>

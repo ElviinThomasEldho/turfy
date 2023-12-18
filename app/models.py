@@ -69,7 +69,7 @@ class Booking(models.Model):
     date = models.DateField("Date", null=True)
     # noOfParticipants = models.IntegerField("No of Participants",max_length=2,null=True)
     
-    dateCreated = models.DateTimeField("Date Created", auto_created=True)
+    dateCreated = models.DateTimeField("Date Created", auto_created=True, null=True)
 
     def __str__(self):
         return str(self.id) + " | " + self.player.firstName + " | " + self.turf.turfName + " | " + str(self.date) 
@@ -89,7 +89,7 @@ class Payment(models.Model):
     screenshot = models.ImageField("Payment Screenshot Upload", null=True, blank=True)
     amount = models.FloatField("Total Amount ", max_length= 10, null = True)
     
-    dateCreated = models.DateTimeField("Date Created", auto_created=True)
+    dateCreated = models.DateTimeField("Date Created", auto_created=True, null=True)
 
     def __str__(self):
         return str(self.id) + " | " + self.player.firstName + " | " + self.turf.turfName + " | " + str(self.dateCreated)

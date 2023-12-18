@@ -24,32 +24,16 @@
     <p class="player-heading">Player</h1>
     <p class="Register-heading" >Register</h1>
     <hr style="width: 700px;color: grey;margin-left: 130px;margin-top: 0px;padding-top: 0;margin-bottom: 3%;">
-    <form action="" method="POST" class="form">
-        <div class="main-form">
-            <div class="left-form">
-                <label for="username"></label>
-                <input type="text" name="username" id="username" placeholder="Player Username" class="input-field" >
+    <form action="" method="POST" class="form"> 
+        {% csrf_token %}
+       
+                <label for="dateOfBirth">Date of Birth</label>
+                <input type="date" name="dateOfBirth" id="dateOfBirth" class="input-field">
                 <br>
-                <label for="first_name"></label>
-                <input type="text" name="first_name" id="first_name" placeholder="Player First Name"class="input-field">
-                <br>
-                <label for="last_name"></label>
-                <input type="text" name="last_name" id="last_name" placeholder="Player Last Name"class="input-field">
-                <br>
-            </div>
-            <div class="right-form">
-                <label for="email"></label>
-                <input type="email" name="email" id="email" placeholder="Player Email ID"class="input-field">
-                <br>
-                <label for="password1"></label>
-                <input type="password" name="password1" id="password1" placeholder="Password"class="input-field">
-                <br>
-                <label for="password2"></label>
-                <input type="password" name="password2" id="password2" placeholder="Confirm Password"class="input-field">
+                <label for="mobile">Phone Number</label>
+                <input type="text" name="mobile" id="mobile" class="input-field">
                 <br>
                 
-            </div>
-        </div>
         <button class="register-button">Register</button>
        
         

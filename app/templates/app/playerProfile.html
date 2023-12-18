@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    {{player.user}}
-    {{player.firstName}}
-    {{player.lastName}}
-    {{player.mobile}}
-    {{player.email}}
-    {{player.dateOfBirth}}
-    {{player.dateCreated}}
-</body>
+  </head>
+  <body>
+    {{player.user}} {{player.firstName}} {{player.lastName}} {{player.mobile}}
+    {{player.email}} {{player.dateOfBirth}} {{player.dateCreated}}
+
+    <h1>Bookings</h1>
+    {% for booking in bookings %}
+    <p>{{booking}}</p>
+    {% endfor %}
+  </body>
 </html>

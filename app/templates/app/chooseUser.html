@@ -1,12 +1,40 @@
+--{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Turfy</title>
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <title>Turfy | Register</title>
 </head>
-<body>
-    <a href="{% url 'registerPlayer' %}">Register as Player</a>
-    <a href="{% url 'registerTurf' %}">Register as Turf</a>
+
+</div>
+<body class="body">
+    <link rel="stylesheet" href="styles.css">
+    <div class="header-div">
+        <div class="turfy-name">
+            <h2 style="font-weight: bold;color: white;margin-left: 30px;">TURFY</h2>      
+        </div>
+        <div class="register-login-div">
+            <p style="color: grey;margin-right: 20px;">Already a User?</p>
+            <a class="login-button" href="{% url 'loginUser' %}">Login</a>
+        </div>
+    </div>
+    <div class="main-register-div">
+        <div class="player-div">
+            <p class="main-register-text1">Player</p>
+            <p class="main-register-text2">Registration</p>
+            <a class="main-register-button" href="{% url 'registerPlayer' %}">Register</a>
+            
+        </div>
+        <div class="vertical-line"></div>
+        <div class="owner-div">
+            <p class="owner-register-text1">Owner</p>
+            <p class="owner-register-text2">Registration</p>
+            <a class="main-register-button" href="{% url 'registerTurf' %}">Register</a>
+        </div>
+    </div>
 </body>
 </html>
