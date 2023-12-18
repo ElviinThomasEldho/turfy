@@ -18,13 +18,6 @@ class Player(models.Model):
         return str(self.id) + " | " + str(self.firstName) + " " + str(self.lastName) 
     
     
-class Day(models.Model):
-    day = models.CharField("Day of the week", max_length=25, null=True)
-    
-    def __str__(self):
-        return str(self.id) + " | " + self.day 
-    
-    
 class TimeSlot(models.Model): 
     CHOICE = (
         ("AM","AM"),
@@ -35,7 +28,6 @@ class TimeSlot(models.Model):
     startAMPM = models.CharField("AM / PM",max_length=3,default="AM",choices=CHOICE)
     endTime = models.IntegerField("End Time",null=True)
     endAMPM = models.CharField("AM / PM",max_length=3,default="AM",choices=CHOICE)
-    days = models.ManyToManyField(Day, blank=True) 
     
     def __str__(self):
         return str(self.id) + " | " + str(self.startTime) + " " + str(self.startAMPM) + " - " + str(self.endTime) + " " + str(self.endAMPM)

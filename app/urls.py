@@ -8,7 +8,6 @@ urlpatterns = [
     path('logout/', views.logoutUser, name='logoutUser'),
     
     path('register/', views.register, name='register'),
-    path('choose-user/', views.chooseUser, name='chooseUser'),
     path('register-player/', views.registerPlayer, name='registerPlayer'),
     path('player-profile/', views.playerProfile, name='playerProfile'),
     path('search-turfs/', views.searchTurfs, name='searchTurfs'),

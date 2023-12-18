@@ -20,60 +20,25 @@ def index(request):
 
 
 def register(request):
-    form = RegisterForm()
 
-    if request.method == "POST":
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password1']
+    return render(request, 'app/chooseUser.html')
 
-            user = authenticate(request, username=username, password=password)
-
-            if user is not None:
-                login(request, user)
-                return redirect('chooseUser')
-
-    context = {
-        'form': form,
-    }
-
-    return render(request, 'app/register.html', context)
-
-
-def chooseUser(request):
-    context = {
-    }
-
-    return render(request, 'app/chooseUser.html', context)
 
 def registerPlayer(request):
-    user = request.user
-    form = PlayerForm()
 
-    if (Player.objects.filter(user=user).exists()):
-            return redirect('playerProfile')
-    else:
-        if request.method == 'POST':
-            form = PlayerForm(request.POST, request.FILES)
-            if form.is_valid():
-                player = form.save()
-                player.user = user
-                player.firstName = user.first_name
-                player.lastName = user.last_name
-                player.emailID = user.email
-                player.save()
+    if request.method == 'POST':
+        user = User.objects.create_user(username=request.method.post('username'),email=request.method.post('email'),password=request.method.post('password1'))
+        login(request, user)
+        
+        add_group = Group.objects.get(name='Player')
+        add_group.user_set.add(request.user)
+        return redirect('playerProfile')
 
-                add_group = Group.objects.get(name='Player')
-                add_group.user_set.add(request.user)
-                return redirect('playerProfile')
+    context = {
+        # 'form': form,
+    }
 
-        context = {
-            'form': form,
-        }
-
-        return render(request, 'app/registerPlayer.html', context)
+    return render(request, 'app/registerPlayer.html', context)
 
 
 def loginUser(request):

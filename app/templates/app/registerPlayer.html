@@ -3,18 +3,28 @@
 {% endblock %} {% block content %}
 <h1>Player</h1>
 <h2>Register</h2>
-<hr
-  style="
-    width: 700px;
-    color: grey;
-    margin-left: 130px;
-    margin-top: 0px;
-    padding-top: 0;
-    margin-bottom: 3%;
-  "
-/>
+
+<hr class="hr-short" />
 <form action="" method="POST" class="form">
   {% csrf_token %}
+
+  <label for="username">Username</label>
+  <input type="text" name="username" id="username" class="input-field" />
+      
+  <label for="email">Email</label>
+  <input type="email" name="email" id="email" class="input-field" />
+      
+  <label for="first_name">First Name</label>
+  <input type="text" name="first_name" id="first_name" class="input-field" />
+      
+  <label for="last_name">Last Name</label>
+  <input type="text" name="last_name" id="last_name" class="input-field" />
+      
+  <label for="password1">Password</label>
+  <input type="password" name="password1" id="password1" class="input-field" />
+      
+  <label for="password2">Confirm Password</label>
+  <input type="password" name="password2" id="password2" class="input-field" />
 
   <label for="dateOfBirth">Date of Birth</label>
   <input type="date" name="dateOfBirth" id="dateOfBirth" class="input-field" />
@@ -22,6 +32,12 @@
   <label for="mobile">Phone Number</label>
   <input type="text" name="mobile" id="mobile" class="input-field" />
   <br />
+  
+
+  {{ form.errors }} {% for message in messages %}
+  <p>{{message}}</p>
+  <br />
+  {% endfor %}
 
   <button class="register-button">Register</button>
 </form>
