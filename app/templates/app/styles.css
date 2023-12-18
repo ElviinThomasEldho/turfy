@@ -1,7 +1,8 @@
 
 .body{
     background-color:black; 
-    
+    font-family: 'Plus Jakarta Sans', sans-serif;
+/* font-family: 'Poppins', sans-serif; */
 }
 
 .header-div{
@@ -192,22 +193,24 @@
 }
 
 .login-input-field{
-    margin-left: 44%;
+    margin-left: 40%;
     height: 50px;
-    width: 200px;
+    width: 300px;
     margin-bottom: 25px;
     color: grey;
     border-color: grey;
     border-width: 1px;
     background-color: transparent;
     text-align: center;
+    border: solid;
+    border-radius: 20px;
 }
 
 .login-login-button{
-    margin-left: 44%;
+    margin-left: 40%;
     height: 50px;
     margin-top: 20px;
-    width: 200px;
+    width: 300px;
     background-color: white;
     border: none;
     cursor: pointer;
@@ -219,5 +222,22 @@
 
 .login-checkbox{
     color: grey;
+}
+
+.create-acc-link{
+    margin-left: 0;
+    padding-left: 0;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.new-to-turfy{
+      color: white; 
+      margin-left:42%;margin-top: 0;padding-top: 0;
+      margin-right: 0;
+      padding-right: 0;
+      margin-top: 0;
+      padding-top: 0;
+
 }
 
