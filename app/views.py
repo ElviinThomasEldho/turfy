@@ -25,10 +25,13 @@ def register(request):
 
 
 def registerPlayer(request):
-
     if request.method == 'POST':
-        user = User.objects.create_user(username=request.method.post('username'),email=request.method.post('email'),password=request.method.post('password1'))
+        data = request.POST
+        user = User.objects.create_user(username=data.get('username'),email=data.get('email'),password=data.get('password1'))
         login(request, user)
+        
+        player = Player.objects.create(user=user, firstName=data.get('first_name'), lastName=data.get('last_name'), mobile=data.get('mobile'), email=data.get('email'), dateOfBirth=data.get('dateOfBirth'))
+        print(player)
         
         add_group = Group.objects.get(name='Player')
         add_group.user_set.add(request.user)
@@ -148,27 +151,22 @@ def cancelBooking(request, pk):
 
 #TURF VIEWS
 def registerTurf(request):
-    user = request.user
-    form = TurfForm(initial={'user': request.user.id})
+    if request.method == 'POST':
+        data = request.POST
+        user = User.objects.create_user(username=data.get('username'),email=data.get('email'),password=data.get('password1'))
+        login(request, user)
+        
+        turf = Turf.objects.create(user=user, turfName=data.get('turfName'), location=data.get('location'), phoneNumber=data.get('phoneNumber'), pricePerSlot=data.get('pricePerSlot'), fieldSize=data.get('fieldSize'))
+        print(turf)
+        
+        add_group = Group.objects.get(name='Turf')
+        add_group.user_set.add(request.user)
+        return redirect('turfProfile')
 
-    if (Turf.objects.filter(user=user).exists()):
-            return redirect('turfProfile')
-    else:
-        if request.method == 'POST':
-            form = TurfForm(request.POST, request.FILES)
-            if form.is_valid():
-                turf = form.save()
-                turf.user = request.user
-                turf.save()
-                add_group = Group.objects.get(name='Turf')
-                add_group.user_set.add(request.user)
-                return redirect('turfProfile')
+    context = {
+    }
 
-        context = {
-            'form': form,
-        }
-
-        return render(request, 'app/registerTurf.html', context)
+    return render(request, 'app/registerTurf.html', context)
 
 
 def turfProfile(request):
