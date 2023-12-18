@@ -1,62 +1,50 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends 'app/main.html' %} {% load static %} {% block title %}
+<title>Turfy | Login</title>
+{% endblock %} {% block content %}
+<form method="POST" action="" class="col text-center">
+  {% csrf_token %}
+  <h2 class="section-heading">Register</h2>
+  <hr class="hr-short" />
 
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <div class="row">
+    <div class="col">
+      <label>{{form.username.label}}</label><br />
+      {{form.username}}
+    </div>
+    <div class="col">
+      <label>{{form.email.label}}</label><br />
+      {{form.email}}
+    </div>
+  </div>
 
-    <title>Turfy | Register</title>
-</head>
+  <div class="row">
+    <div class="col">
+      <label>{{form.first_name.label}}</label><br />
+      {{form.first_name}}
+    </div>
+    <div class="col">
+      <label>{{form.last_name.label}}</label><br />
+      {{form.last_name}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label>{{form.password1.label}}</label><br />
+      {{form.password1}}
+    </div>
+    <div class="col">
+      <label>{{form.password2.label}}</label><br />
+      {{form.password2}}
+    </div>
+  </div>
 
-</div>
-<body>
-    <form method="POST" action="" class="col text-center">
-        {% csrf_token %}
-        <h2 class="section-heading">Register</h2>
-        <hr class="hr-short">
-    
-        <div class="row">
-            <div class="col">
-                <label>{{form.username.label}}</label><br>
-                {{form.username}}
-            </div>
-            <div class="col">
-                <label>{{form.email.label}}</label><br>
-                {{form.email}}
-            </div>
-        </div>
-    
-        <div class="row">
-            <div class="col">
-                <label>{{form.first_name.label}}</label><br>
-                {{form.first_name}}
-            </div>
-            <div class="col">
-                <label>{{form.last_name.label}}</label><br>
-                {{form.last_name}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label>{{form.password1.label}}</label><br>
-                {{form.password1}}
-            </div>
-            <div class="col">
-                <label>{{form.password2.label}}</label><br>
-                {{form.password2}}
-            </div>
-        </div>
-    
-        {{ form.errors }}
-    
-        {% for message in messages %}
-        <p>{{message}}</p><br>
-        {% endfor %}
-    
-        <button class="btn btn-success" type="submit" name="Submit">Register</button>
-    </form>
-    <a href="{% url 'registerUser' %}">Already Registered?</a>
-</body>
-</html>
+  {{ form.errors }} {% for message in messages %}
+  <p>{{message}}</p>
+  <br />
+  {% endfor %}
+
+  <button class="btn btn-success" type="submit" name="Submit">Register</button>
+</form>
+<a href="{% url 'register' %}">Already Registered?</a>
+
+{% endblock %}

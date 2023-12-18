@@ -1,15 +1,5 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-
-    <title>Turfy</title>    
-</head>
-<body>
-    <h1>Turfy</h1>
-</body>
-</html>
+{% extends 'app/main.html' %} {% load static %} {% block title %}
+<title>Turfy | Login</title>
+{% endblock %} {% block content %}
+<h1>Turfy</h1>
+{% endblock %}

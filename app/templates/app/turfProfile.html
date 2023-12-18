@@ -1,71 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body style="padding-bottom: 1000px;">
-    <div class="navbar" style="background-color: lightblue;position: fixed;height: 50px;top: 0px;left:0px;right: 0;margin-bottom: 50px;display: flex;justify-content: space-between;">
-        <div style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-weight: bold;font-size: medium;display: flex;justify-content: center;">Turfy</div>
-        <div style="display: flex;flex-direction: row;justify-content: space-between;">
-            <div style="margin-left: 15px;margin-right: 15px;">Home</div>
-            <div style="margin-left: 15px;margin-right: 15px;">About</div>
-            <div style="margin-left: 15px;margin-right: 15px;">Contact Us</div>
-
-        </div>
-
-    </div>
-    <div style="margin-top: 50px;"></div>
-    <button style="display: block;">back</button>
-    <div style="height: 300px;width: 1fr;background-color: blue;"><img src="#" alt="image of place"></div>
-    <h1>{{turf.turfName}}</h1>
-    <div style="border: solid;border-color: black;border-width: 3px;"> <p>description about place</p>
-        <p>{{turf.location}}</p>
-        <p>{{turf.size}}</p>
-        <p>{{turf.phoneNumber}}</p>
-        <p>{{turf.fieldSize}}</p>
-        <p>{{turf.pricePerSlot}}</p>
-        <p>time slots available</p>
-    </div>
-    <div style="border: solid;border-width: 3px;border-color: black; display: flex;justify-content: space-between;">
-        <!-- <a href="{% url 'createBooking' turf.id %}">Book Turf</a>
+{% extends 'app/main.html' %} {% load static %} {% block title %}
+<title>Turfy | Login</title>
+{% endblock %} {% block content %}
+<div style="height: 300px; width: 1fr; background-color: blue">
+  <img src="#" alt="image of place" />
+</div>
+<h1>{{turf.turfName}}</h1>
+<div style="border: solid; border-color: black; border-width: 3px">
+  <p>description about place</p>
+  <p>{{turf.location}}</p>
+  <p>{{turf.size}}</p>
+  <p>{{turf.phoneNumber}}</p>
+  <p>{{turf.fieldSize}}</p>
+  <p>{{turf.pricePerSlot}}</p>
+  <p>time slots available</p>
+</div>
+<div
+  style="
+    border: solid;
+    border-width: 3px;
+    border-color: black;
+    display: flex;
+    justify-content: space-between;
+  "
+>
+  <!-- <a href="{% url 'createBooking' turf.id %}">Book Turf</a>
         <button>add to fav</button> -->
-    </div>
-    <h3>Bookings</h3>
-    <table>
-        <thead>
-            <th>Player</th>
-            <th>Time Slot</th>
-            <th>Date</th>
-        </thead>
-        <tbody>
-            {% for booking in bookings %}
-            <td>{{booking.player.firstName}} {{booking.player.lastName}}</td>
-            <td>{{booking.timeSlot.startTime}} {{booking.timeSlot.startAMPM}} - {{booking.timeSlot.lastName}} {{booking.timeSlot.endAMPM}}</td>
-            <td>{{booking.date}}</td>
-            {% endfor %}
-        </tbody>
-    </table>
+</div>
+<h3>Bookings</h3>
+<table>
+  <thead>
+    <th>Player</th>
+    <th>Time Slot</th>
+    <th>Date</th>
+  </thead>
+  <tbody>
+    {% for booking in bookings %}
+    <td>{{booking.player.firstName}} {{booking.player.lastName}}</td>
+    <td>
+      {{booking.timeSlot.startTime}} {{booking.timeSlot.startAMPM}} -
+      {{booking.timeSlot.lastName}} {{booking.timeSlot.endAMPM}}
+    </td>
+    <td>{{booking.date}}</td>
+    {% endfor %}
+  </tbody>
+</table>
 
-    <h3>Time Slots</h3>
-    <table>
-        <thead>
-            <th>Start Time</th>
-            <th>End Time</th>
-            <th>Days</th>
-        </thead>
-        <tbody>
-            {% for slot in slots %}
-            <td>{{slot.startTime}} {{slot.startAMPM}}</td>
-            <td>{{slot.endTime}} {{slot.endAMPM}}</td>
-            <td>{% for day in slot.days.all %}
-                {{day.day}} 
-                {% endfor %}
-            </td>
-            {% endfor %}
-        </tbody>
-    </table>
-    
-</body>
-</html>
+<h3>Time Slots</h3>
+<a href="{% url 'addTimeSlot' %}">Add</a>
+<table>
+  <thead>
+    <th>Start Time</th>
+    <th>End Time</th>
+    <th>Days</th>
+    <th>Edit</th>
+  </thead>
+  <tbody>
+    {% for slot in slots %} {{slot}}
+    <td>{{slot.startTime}} {{slot.startAMPM}}</td>
+    <td>{{slot.endTime}} {{slot.endAMPM}}</td>
+    <td>{% for day in slot.days.all %} {{day.day}} {% endfor %}</td>
+    <td><a href="{% url 'editTimeSlot' slot.id %}">Edit</a></td>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

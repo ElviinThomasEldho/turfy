@@ -211,7 +211,6 @@ def turfProfile(request):
     bookings = Booking.objects.filter(turf=turf)
     payments = Payment.objects.filter(turf=turf)
     slots = turf.slots.all()
-    print(slots)
 
     context = {
         'turf':turf,
@@ -250,8 +249,7 @@ def addTimeSlot(request):
         form = TimeSlotForm(request.POST)
         if form.is_valid():
             slot = form.save()
-            add_group = Group.objects.get(name='turf')
-            add_group.user_set.add(request.user)
+            turf.slots.add(slot)
             return redirect('turfProfile')
 
     context = {
@@ -262,9 +260,19 @@ def addTimeSlot(request):
 
 
 def editTimeSlot(request, pk):
+    turf = Turf.objects.get(user=request.user)
+    timeSlot = TimeSlot.objects.get(id=pk)
+    form = TimeSlotForm(instance=timeSlot)
+
+    if request.method == 'POST':
+        form = TimeSlotForm(request.POST, instance=timeSlot)
+        if form.is_valid():
+            slot = form.save()
+            turf.slots.add(slot)
+            return redirect('turfProfile')
 
     context = {
-        
+        'form': form,
     }
 
     return render(request, 'app/editTimeSlots.html', context)

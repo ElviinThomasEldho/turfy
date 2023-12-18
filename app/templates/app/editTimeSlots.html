@@ -1,40 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>addTimeSlots</title>
-</head>
-<body>
-    <div style="background-color: lightblue;height: 50px;position: fixed;top: 0;
-    left: 0;right: 0;"></div>
-    <div style="border: solid;border-color: black;margin-top: 70px;height: 500px;width: 400px;margin-left: 60px;">
-        <form action="" method="post">
-            <label for="startTime">startTime</label>
-            <input type="number" name="startTime">
-            <select name="am-pm" id="am-pm">
-                <option value="AM">AM</option>
-                <option value="PM">PM</option>
-            </select>
-            <br>
-            <label for="endTime">endTime</label>
-            <input type="number" name="endTime">
-            <select name="am-pm" id="am-pm">
-                <option value="AM">AM</option>
-                <option value="PM">PM</option>
-            </select> 
-            <br>
-        </form>   
-        <input type="checkbox"><label for="day">Monday</label>
-        <input type="checkbox"><label for="day">Tuesday</label>
-        <input type="checkbox"><label for="day">Wednesday</label>
-        <input type="checkbox"><label for="day">Thursday</label>
-        <input type="checkbox"><label for="day">Friday</label>
-        <input type="checkbox"><label for="day">Saturday</label>
-        <input type="checkbox"><label for="day">Sunday</label>
-        <br>
-        <br>
-        <button>submit</button>
-    </div>
-</body>
-</html>0
+{% extends 'app/main.html' %} {% load static %} {% block title %}
+<title>Turfy | Login</title>
+{% endblock %} {% block content %}
+
+  <form action="" method="post">
+    {% csrf_token %}
+    <label for="startTime">Start Time</label>
+    {{form.startTime}}
+    {{form.startAMPM}}
+    <br />
+    <label for="endTime">End Time</label>
+    {{form.endTime}}
+    {{form.endAMPM}}
+    <br />
+    {{form.days}}
+    <button type="submit">Edit</button>
+  </form>
+</div>
+{% endblock %}

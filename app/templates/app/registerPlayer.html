@@ -1,47 +1,32 @@
---{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends 'app/main.html' %} {% load static %} {% block title %}
+<title>Turfy | Login</title>
+{% endblock %} {% block content %}
+<h1>Player</h1>
+<h2>Register</h2>
+<hr
+  style="
+    width: 700px;
+    color: grey;
+    margin-left: 130px;
+    margin-top: 0px;
+    padding-top: 0;
+    margin-bottom: 3%;
+  "
+/>
+<form action="" method="POST" class="form">
+  {% csrf_token %}
 
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <label for="dateOfBirth">Date of Birth</label>
+  <input type="date" name="dateOfBirth" id="dateOfBirth" class="input-field" />
+  <br />
+  <label for="mobile">Phone Number</label>
+  <input type="text" name="mobile" id="mobile" class="input-field" />
+  <br />
 
-    <title>Turfy | Register</title>
-</head>
-<body class="body">
-    <div class="header-div">
-        <div class="turfy-name">
-            <h2 style="font-weight: bold;color: white;margin-left: 30px;">TURFY</h2>      
-        </div>
-        <DIV class="register-login-div">
-            <p style="color: grey;margin-right: 20px;">Already a User?</p>
-            <button class="login-button">Login</button>
-        </DIV>
-    </div>
-    
-    <link rel="stylesheet" href="styles.css">
-    <p class="player-heading">Player</h1>
-    <p class="Register-heading" >Register</h1>
-    <hr style="width: 700px;color: grey;margin-left: 130px;margin-top: 0px;padding-top: 0;margin-bottom: 3%;">
-    <form action="" method="POST" class="form"> 
-        {% csrf_token %}
-       
-                <label for="dateOfBirth">Date of Birth</label>
-                <input type="date" name="dateOfBirth" id="dateOfBirth" class="input-field">
-                <br>
-                <label for="mobile">Phone Number</label>
-                <input type="text" name="mobile" id="mobile" class="input-field">
-                <br>
-                
-        <button class="register-button">Register</button>
-       
-        
-    </form>
-    {{form.errors}}
-    {% for message in messages %}
-    <p>{{message}}</p><br>
-    {% endfor %}
-    
-</body>
-</html>
+  <button class="register-button">Register</button>
+</form>
+<p>{{form.errors}}</p>
+{% for message in messages %}
+<p>{{message}}</p>
+<br />
+{% endfor %} {% endblock %}

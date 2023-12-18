@@ -1,20 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'app/main.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>Turfy | Login</title>
+{% endblock %}
+
+{% block content %}
     <h1>TURFY</h1>
     <div style="display: flex; justify-content: space-between;">
         <div>
-            <INPUT type="search" placeholder="Enter Name"></INPUT>
+            <input type="search" placeholder="Enter Name"></input>
             <button class="search">Search</button>
         </div>
         
         <div>
-            <BUTTon class="filter-button">Filter</BUTTon>
+            <button class="filter-button">Filter</button>
         </div>
     </div>
     <br>
@@ -37,7 +38,4 @@
         {% endfor %}
     </div>
    
-    
-   
-</body>
-</html>
+{% endblock %}

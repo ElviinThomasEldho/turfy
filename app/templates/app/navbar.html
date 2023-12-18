@@ -1,0 +1,15 @@
+<nav>
+  <h3>TURFY</h3>
+  {% if user.is_authenticated and player %}
+  <div class="btn-nav-group">
+    <a href="{% url 'searchTurfs' %}" class="btn btn-nav">Turfs</a
+    ><a href="{% url 'playerProfile' %}" class="btn btn-nav">Profile</a
+    ><a href="{% url 'logoutUser' %}" class="btn btn-nav">Logout</a>
+  </div>
+
+  {% elif user.is_authenticated and turf %}
+  <div class="btn-nav-group"><a href="{% url 'turfProfile' %}" class="btn btn-nav">Profile</a
+    ><a href="{% url 'logoutUser' %}" class="btn btn-nav">Logout</a>
+  </div>  
+  {% endif %}
+</nav>
