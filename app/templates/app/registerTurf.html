@@ -3,46 +3,48 @@
 {% endblock %} {% block content %}
 <h1 class="player-heading">Turf</h1>
 <h2 class="Registration-heading">Registration</h2>
-<hr
-  style="
-    width: 700px;
-    color: grey;
-    margin-left: 130px;
-    margin-top: 0px;
-    padding-top: 0;
-    margin-bottom: 3%;
-  "
-/>
+<hr />
 <form action="" method="POST" class="form">
   {% csrf_token %}
-  <div class="main-form">
-    <div class="left-form">
-      <label for="owner-name"></label>
-      {{form.ownerName}}
-      <br />
-      <label for="turf-name"></label>
-      {{form.turfName}}
-      <br />
-      <label for="Location"></label>
-      {{form.location}}
-      <br />
-    </div>
-    <div class="right-form">
-      <label for="Price-slot"></label>
-      {{form.pricePerSlot}}
-      <br />
-      <label for="phone-num"></label>
-      {{form.phoneNumber}}
-      <br />
-      <label for="password"></label>
-      {{form.fieldSize}}
-      <br />
-    </div>
-  </div>
+  <label for="username">Username</label>
+  <input type="text" name="username" id="username" class="input-field" />
+
+  <label for="email">Email</label>
+  <input type="email" name="email" id="email" class="input-field" />
+
+  <label for="first_name">First Name</label>
+  <input type="text" name="first_name" id="first_name" class="input-field" />
+
+  <label for="last_name">Last Name</label>
+  <input type="text" name="last_name" id="last_name" class="input-field" />
+
+  <label for="password1">Password</label>
+  <input type="password" name="password1" id="password1" class="input-field" />
+
+  <label for="password2">Confirm Password</label>
+  <input type="password" name="password2" id="password2" class="input-field" />
+
+  <label for="turf-name">Turf Name</label>
+  <input type="text" name="turfName" id="turfName" class="input-field" />
+
+  <label for="location">Location</label>
+  <input type="text" name="location" id="location" class="input-field" />
+
+  <label for="pricePerSlot">Price per slot</label>
+  <input type="number" name="pricePerSlot" id="pricePerSlot" class="input-field" />
+  <br />
+  <label for="phoneNumber">Phone Number</label>
+  <input type="text" name="phoneNumber" id="phoneNumber" class="input-field" />
+  <br />
+  <label for="password">Field Size</label>
+  <select name="fieldSize" id="fieldSize">
+    <option value="5s">5s</option>
+    <option value="7s">7s</option>
+  </select>
+  <br />
   <button class="register-button">Register</button>
 </form>
 {{form.errors}} {% for message in messages %}
 <p>{{message}}</p>
 <br />
-{% endfor %} {{form.errors}}
-{% endblock %}
+{% endfor %} {{form.errors}} {% endblock %}
