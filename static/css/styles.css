@@ -413,19 +413,106 @@ footer {
     border-radius: 40px;
 }
 
-.payment-heading{
-   
-}
-
 .turf-payment-heading{
     text-align: cent;
     margin-left: 0;
     padding-left: 0;
 }
 
-.payment-div{
-
+.index-catchline{
+    margin-top: 17%;
+    left: 0;
+    margin-left: 0;
+    padding-left: 0;
 }
+
+.index-catchline1{
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.index-join-button{
+    margin-top: 10%;
+    margin-right: 2%;
+}
+
+.index-login-button{
+    border: solid;
+    border-color: white;
+    background-color: black;
+    color: white;
+}
+
+.index-para{
+    margin-top: 50%;
+}
+
+.index-para1{
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.index-para2{
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.search-bar{
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 50px;
+    width: 70%;
+    height: 30%;
+}
+
+.first-heading{
+    margin-top: 13%;
+    margin-left: 20%;
+    font-size: 15px;
+    color: black;
+}
+
+.second-heading{
+    margin-left: 20%;
+    margin-top: 2%;
+    color: rgb(51, 51, 51);
+}
+
+.first-heading1{
+    margin-top: 13%;
+    text-align: left;
+    font-size: 15px;
+    color: black;
+}
+
+.second-heading1{
+    text-align: left;
+    margin-top: 2%;
+    color: rgb(51, 51, 51);
+}
+
+.city,.name,.date{
+    width: 23%;
+    height: 100px;
+}
+
+.vertical-hr{
+    height:50px;
+    border: solid;
+    width: 0;
+    border-color: black;
+    border-width: 1px;
+}
+
+.index-last-div{
+    margin-top: 25%;
+}
+
 
 
 
