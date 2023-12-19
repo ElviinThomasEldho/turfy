@@ -40,7 +40,7 @@ body {
     gap: 20px;
 }
 
-input, select, option {
+input, select{
     background-color: transparent;
     padding: 10px 20px;
     border-radius: 10px;
@@ -48,13 +48,31 @@ input, select, option {
     border: solid 2px white;
     min-width: 300px;
     color-scheme: dark;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
+}
+
+select option{
+    color: black;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
 }
 
 .main-div{
     display: flex;
     flex-direction: row;
     gap: 40px;
+}
+
+.left-div,.right-div{
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
 }
 
 nav {
