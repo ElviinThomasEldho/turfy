@@ -51,14 +51,12 @@
   <thead>
     <th>Start Time</th>
     <th>End Time</th>
-    <th>Days</th>
     <th>Edit</th>
   </thead>
   <tbody>
     {% for slot in slots %} {{slot}}
     <td>{{slot.startTime}} {{slot.startAMPM}}</td>
     <td>{{slot.endTime}} {{slot.endAMPM}}</td>
-    <td>{% for day in slot.days.all %} {{day.day}} {% endfor %}</td>
     <td><a href="{% url 'editTimeSlot' slot.id %}">Edit</a></td>
     {% endfor %}
   </tbody>

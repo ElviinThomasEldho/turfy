@@ -50,13 +50,11 @@
   <thead>
     <th>Start Time</th>
     <th>End Time</th>
-    <th>Days</th>
   </thead>
   <tbody>
     {% for slot in slots %}
     <td>{{slot.startTime}} {{slot.startAMPM}}</td>
     <td>{{slot.endTime}} {{slot.endAMPM}}</td>
-    <td>{% for day in slot.days.all %} {{day.day}} {% endfor %}</td>
     {% endfor %}
   </tbody>
 </table>
