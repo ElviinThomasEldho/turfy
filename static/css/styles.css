@@ -553,7 +553,32 @@ footer {
     flex-direction: row;
 }
 
+.startTime input{
+    /* min-width: min-content; */
+    border-radius: 10px 0 0 10px;
+    
+}
+
 .startTime select{
+    min-width: min-content;
+    border-radius: 0 10px 10px 0;
+    
+}
+
+.endTime{
+    display: flex;
+    flex-direction: row;
+}
+
+.endTime input{
+    /* min-width: min-content; */
+    border-radius: 10px 0 0 10px;
+    
+}
+
+.endTime select{
+    min-width: min-content;
+    border-radius: 0 10px 10px 0;
     
 }
 
