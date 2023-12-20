@@ -22,27 +22,22 @@
         <p class="view-turf-desc">Price Per Slot:{{turfData.pricePerSlot}}</p>
       </div>
       <br>
-      <form class="turf-booking" action="" method="POST">
-        {% csrf_token %}
-        <label for="time slot">Time Slot</label>
-        <select type="time" name="slot" id="slot">
-          {% for slot in slots %}
-          <option value="{{slot.id}}">{{slot.startTime}} {{slot.startAMPM}} - {{slot.endTime}} {{slot.endAMPM}}</option>
-          {% endfor %}
-          </select>
-          <br>
-        <label for="date">Date</label>
-        <input type="date" name="date" id="date" placeholder="Date"><br>
-        <button type="submit" class="book-turf-button">Book Turf</button>
-      </form>
     </div>
   </div>
   <div class="view-right-div">
-    <label for="time slot">Time Slot</label>
-      <input type="time" name="time slot" id="time slot" placeholder="Time Slot"><br>
+    <form class="turf-booking" action="" method="POST">
+      {% csrf_token %}
+      <label for="time slot">Time Slot</label>
+      <select type="time" name="slot" id="slot">
+        {% for slot in slots %}
+        <option value="{{slot.id}}">{{slot.startTime}} {{slot.startAMPM}} - {{slot.endTime}} {{slot.endAMPM}}</option>
+        {% endfor %}
+        </select>
+
       <label for="date">Date</label>
-      <input type="date" name="date" id="date" placeholder="Date"><br>
-      <a class="book-turf-button" href="{% url 'createBooking' turf.id %}">Book Turf</a>
+      <input type="date" name="date" id="date" placeholder="Date">
+      <button type="submit" class="book-turf-button">Book Turf</button>
+    </form>
 </div>
 
 {% endblock %}
