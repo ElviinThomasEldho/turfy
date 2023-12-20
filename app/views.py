@@ -98,10 +98,19 @@ def searchTurfs(request):
 
 
 def viewTurf(request, pk):
-    turf = Turf.objects.get(id = pk)
+    player = Player.objects.get(user = request.user)
+    turf = Turf.objects.get(id=pk)
+    slots = turf.slots.all()
+    
+    if request.method == 'POST':
+        data = request.POST
+        print(data)
+        slot = TimeSlot.objects.get(id=request.POST["slot"])
+        booking = Booking.objects.create(player=player, turf=turf, timeSlot = slot, date = request.POST["date"])
+        return redirect('/complete-payment/'+str(booking.id)+'/')
 
     context = {
-        'turf':turf,        
+        'slots':slots,        
     }
 
     return render(request, 'app/viewTurf.html', context)
