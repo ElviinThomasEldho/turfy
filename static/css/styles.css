@@ -661,3 +661,43 @@ footer {
 .booking-card p{
     color: black;
 }
+
+.profile-main-div{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-left{
+    width: 20%;
+}
+
+.profile-pic{
+    width: 20%;
+    height: 200px;
+    background-color: rgb(255, 255, 255);
+}
+
+.profile-right{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 50px;
+    margin-top: 30px;
+}
+
+.details1,.details2,.details3{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.dark-text{
+    color:rgb(103, 103, 103);
+    font-size: 15px;
+}
+
+.light-text{
+    color: white;
+    font-size: 15px;
+}

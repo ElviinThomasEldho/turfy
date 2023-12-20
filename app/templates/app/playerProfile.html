@@ -1,11 +1,48 @@
 {% extends 'app/main.html' %} {% load static %} {% block title %}
 <title>Turfy | Login</title>
 {% endblock %} {% block content %} 
-{{player.user}} {{player.firstName}}
-{{player.lastName}} {{player.mobile}} {{player.email}} {{player.dateOfBirth}}
-{{player.dateCreated}}
 
-<h1>Bookings</h1>
-{% for booking in bookings %}
-<p>{{booking}}</p>
-{% endfor %} {% endblock %}
+
+<h1>Welcome back, {{player.firstName}}</h1>
+
+<div class="profile-main-div">
+    <div class="profile-left">
+        <div class="profile-pic">
+            <img src="" alt="#">
+        </div>
+    </div>
+    <div class="profile-right">
+        <div class="details1">
+            <p class="dark-text"> UserName </p> <p class="light-text"> {{player.user}} </p>
+            <p class="dark-text"> Email </p> <p class="light-text"> {{player.email}}</p>
+        </div>
+        <div class="details2">
+            <p class="dark-text"> Name  </p> <p class="light-text"> {{player.firstName}} {{player.lastName}}</p>
+        </div>
+        <div class="details3">
+            <p class="dark-text"> Phone Number </p> <p class="light-text"> {{player.mobile}} </p>
+            <p class="dark-text"> DOB  </p> <p class="light-text"> {{player.dateOfBirth}}</p>
+        </div>
+    </div>
+</div>
+
+<h2>Bookings</h2>
+<div class="bookings-grid">
+    {% for booking in bookings %}
+    
+      <div class="booking-card">
+        <div class="start-time">
+          <p class="time">{{booking.turf.turfName}}</p>
+          <p class="label">{{booking.date}}</p>
+        </div>
+        <div class="vertical-hr"></div>
+        <div class="end-time">
+          <p class="label">Time Slot</p>
+          <p class="time">{{booking.timeSlot.startTime}} {{booking.timeSlot.startAMPM}} - {{booking.timeSlot.endTime}} {{booking.timeSlot.endAMPM}}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
+
+
