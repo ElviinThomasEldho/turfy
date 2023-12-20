@@ -21,7 +21,27 @@
         <p class="view-turf-desc">Field Size :{{turf.fieldSize}}</p>
         <p class="view-turf-desc">Price Per Slot:{{turf.pricePerSlot}}</p>
       </div>
+      <div class="time-slots">
+        <h2> Your Time Slots</h2>
+        <!-- <a href="{% url 'addTimeSlot' %}" class="btn">Add + </a> -->
+        <div class="slot-grid">
+          {% for slot in slots %}
+          <div class="slot-card">
+            <div class="start-time">
+              <p class="label">Start time</p>
+              <p class="time">{{slot.startTime}} {{slot.startAMPM}}</p>
+            </div>
+            <div class="end-time">
+              <p class="label">End time</p>
+              <p class="time">{{slot.endTime}} {{slot.endAMPM}}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
     </div>
+    <br>
+  <a class="btn" href="{% url 'addTimeSlot' %}">+ Time Slot</a>
   </div>
   <div class="view-right-div">
     <div class="view-ratings">
@@ -33,4 +53,22 @@
   </div>
 </div>
 
+
+<div class="booking-container">
+  <h2> Your Bookings</h2>
+  <!-- <a href="{% url 'addTimeSlot' %}" class="btn">Add + </a> -->
+  <div class="bookings-grid">
+    {% for booking in bookings %}
+    <div class="booking-card">
+      <div class="start-time">
+        <p class="label">Start time</p>
+        <p class="time">{{booking.startTime}} {{booking.startAMPM}}</p>
+      </div>
+      <div class="end-time">
+        <p class="label">End time</p>
+        <p class="time">{{booking.endTime}} {{booking.endAMPM}}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
 {% endblock %}

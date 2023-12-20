@@ -23,8 +23,24 @@
       </div>
       <div class="time-slots">
         <h2> Your Time Slots</h2>
+        <!-- <a href="{% url 'addTimeSlot' %}" class="btn">Add + </a> -->
+        <div class="slot-grid">
+          {% for slot in slots %}
+          <div class="slot-card">
+            <div class="start-time">
+              <p class="label">Start time</p>
+              <p class="time">{{slot.startTime}} {{slot.startAMPM}}</p>
+            </div>
+            <div class="end-time">
+              <p class="label">End time</p>
+              <p class="time">{{slot.endTime}} {{slot.endAMPM}}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
       </div>
     </div>
+
   </div>
   <div class="view-right-div">
     <form class="turf-booking" action="" method="POST">
@@ -41,5 +57,7 @@
       <button type="submit" class="book-turf-button">Book Turf</button>
     </form>
 </div>
+
+
 
 {% endblock %}

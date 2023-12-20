@@ -557,11 +557,21 @@ footer {
     
 }
 
+.time-slots {
+    display: flex;
+    flex-direction: column;
+}
 
+.slot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 
+.slot-card {
+    display: flex;
+    gap: 20px;
+}
 
-
-
-
-
-
+.start-time .time, .end-time .time {
+    font-size: 20px;
+}
