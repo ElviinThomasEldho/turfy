@@ -37,13 +37,11 @@
     </div>
   </div>
   <div class="view-right-div">
-    <div class="view-ratings">
-      <p class="ratings">3.5/5</p>
-    </div>
-    <div class="view-reviews">
-        <p class="reviews">No Reviews Yet</p>
-    </div>
-  </div>
+    <label for="time slot">Time Slot</label>
+      <input type="time" name="time slot" id="time slot" placeholder="Time Slot"><br>
+      <label for="date">Date</label>
+      <input type="date" name="date" id="date" placeholder="Date"><br>
+      <a class="book-turf-button" href="{% url 'createBooking' turf.id %}">Book Turf</a>
 </div>
 
 {% endblock %}

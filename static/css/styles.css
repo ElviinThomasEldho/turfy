@@ -513,6 +513,33 @@ footer {
     margin-top: 25%;
 }
 
+.time-slots-hr{
+    width: 40%;
+    color: white;
+}
+
+.time-slots-name{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    text-align: left;
+    margin-left: 3%;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.time-slots-name h2 {
+    margin: 0;
+}
+
+
+.time-slots-name-hr{
+    width: 78%;
+    height: 0.5px;
+}
+
+
 
 
 
