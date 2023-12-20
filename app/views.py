@@ -110,31 +110,32 @@ def viewTurf(request, pk):
         return redirect('/complete-payment/'+str(booking.id)+'/')
 
     context = {
+        'turfData':turf,    
         'slots':slots,        
     }
 
     return render(request, 'app/viewTurf.html', context)
 
 
-def createBooking(request, pk):
-    form = BookingForm()
-    player = Player.objects.get(user = request.user)
-    turf = Turf.objects.get(id=pk)
+# def createBooking(request, pk):
+#     form = BookingForm()
+#     player = Player.objects.get(user = request.user)
+#     turf = Turf.objects.get(id=pk)
 
-    if request.method == 'POST':
-        form = BookingForm(request.POST, request.FILES)
-        if form.is_valid():
-            booking = form.save()
-            booking.player = player
-            booking.turf = turf
-            booking.save()
-            return redirect('/complete-payment/'+str(booking.id)+'/')
+#     if request.method == 'POST':
+#         form = BookingForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             booking = form.save()
+#             booking.player = player
+#             booking.turf = turf
+#             booking.save()
+#             return redirect('/complete-payment/'+str(booking.id)+'/')
 
-    context = {
-        'form': form,
-    }
+#     context = {
+#         'form': form,
+#     }
 
-    return render(request, 'app/bookTurf.html', context)
+#     return render(request, 'app/bookTurf.html', context)
 
 
 def completePayment(request, pk):

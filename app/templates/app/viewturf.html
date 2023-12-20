@@ -3,7 +3,7 @@
 {% endblock %} {% block content %}
 
 <div class="name-div">
-  <h1 class="turf-name">{{turf.turfName}}</h1>
+  <h1 class="turf-name">{{turfData.turfName}}</h1>
 </div>
 <div class="view-main-div">
   <div class="view-left-div">
@@ -15,11 +15,11 @@
     </div>
     <div class="view-turf-details">
       <div class="turf-details">
-        <p class="view-turf-desc1">Location :{{turf.location}}</p>
-        <p class="view-turf-desc">Turf Size :{{turf.size}}</p>
-        <p class="view-turf-desc">Phone No. :{{turf.phoneNumber}}</p>
-        <p class="view-turf-desc">Field Size :{{turf.fieldSize}}</p>
-        <p class="view-turf-desc">Price Per Slot:{{turf.pricePerSlot}}</p>
+        <p class="view-turf-desc1">Location :{{turfData.location}}</p>
+        <p class="view-turf-desc">Turf Size :{{turfData.size}}</p>
+        <p class="view-turf-desc">Phone No. :{{turfData.phoneNumber}}</p>
+        <p class="view-turf-desc">Field Size :{{turfData.fieldSize}}</p>
+        <p class="view-turf-desc">Price Per Slot:{{turfData.pricePerSlot}}</p>
       </div>
       <form class="turf-booking" action="" method="POST">
         {% csrf_token %}
