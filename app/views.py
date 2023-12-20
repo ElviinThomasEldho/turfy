@@ -6,6 +6,7 @@ from django.contrib.auth.models import Group, User
 
 from .models import *
 from .forms import *
+from .decorators import *
 
 # Create your views here.
 
@@ -74,7 +75,7 @@ def logoutUser(request):
     logout(request)
     return redirect('loginUser')
 
-
+@player_only
 def playerProfile(request):
     player = Player.objects.get(user=request.user)
     bookings = Booking.objects.filter(player=player)
@@ -86,7 +87,7 @@ def playerProfile(request):
 
     return render(request, 'app/playerProfile.html', context)
 
-
+@player_only
 def searchTurfs(request):
     turfs = Turf.objects.all()
 
@@ -96,7 +97,7 @@ def searchTurfs(request):
 
     return render(request, 'app/searchTurf.html', context)
 
-
+@player_only
 def viewTurf(request, pk):
     player = Player.objects.get(user = request.user)
     turf = Turf.objects.get(id=pk)
@@ -137,7 +138,7 @@ def viewTurf(request, pk):
 
 #     return render(request, 'app/bookTurf.html', context)
 
-
+@player_only
 def completePayment(request, pk):
     form = PaymentForm()
 
@@ -153,7 +154,7 @@ def completePayment(request, pk):
 
     return render(request, 'app/completePayment.html', context)
 
-
+@player_only
 def cancelBooking(request, pk):
     booking = Booking.objects.get(id=pk)
     booking.delete()
@@ -179,6 +180,7 @@ def registerTurf(request):
     return render(request, 'app/registerTurf.html', context)
 
 
+@turf_only
 def turfProfile(request):
     turf = Turf.objects.get(user=request.user)
     bookings = Booking.objects.filter(turf=turf)
@@ -195,6 +197,7 @@ def turfProfile(request):
     return render(request, 'app/turfProfile.html', context)
 
 
+@turf_only
 def editTurfProfile(request):
     user = request.user
     turf = Turf.objects.get(user=user)
@@ -214,6 +217,7 @@ def editTurfProfile(request):
     return render(request, 'app/editTurfProfile.html', context)
 
 
+@turf_only
 def addTimeSlot(request):
     turf = Turf.objects.get(user=request.user)
     form = TimeSlotForm(initial={'turf': turf})
@@ -232,6 +236,7 @@ def addTimeSlot(request):
     return render(request, 'app/addTimeSlots.html', context)
 
 
+@turf_only
 def editTimeSlot(request, pk):
     turf = Turf.objects.get(user=request.user)
     timeSlot = TimeSlot.objects.get(id=pk)
@@ -251,6 +256,7 @@ def editTimeSlot(request, pk):
     return render(request, 'app/editTimeSlots.html', context)
 
 
+@turf_only
 def deleteTimeSlot(request, pk):
 
     context = {
