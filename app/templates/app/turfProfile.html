@@ -31,44 +31,45 @@
               <p class="label">Start time</p>
               <p class="time">{{slot.startTime}} {{slot.startAMPM}}</p>
             </div>
+            <div class="vertical-hr"></div>
             <div class="end-time">
               <p class="label">End time</p>
               <p class="time">{{slot.endTime}} {{slot.endAMPM}}</p>
             </div>
           </div>
           {% endfor %}
+          <a class="slot-card" href="{% url 'addTimeSlot' %}">+ Time Slot</a>
         </div>
       </div>
     </div>
     <br>
-  <a class="btn" href="{% url 'addTimeSlot' %}">+ Time Slot</a>
+
   </div>
-  <div class="view-right-div">
-    <div class="view-ratings">
-      <p class="ratings">3.5/5</p>
-    </div>
-    <div class="view-reviews">
-        <p class="reviews">No Reviews Yet</p>
-    </div>
-  </div>
+  
 </div>
 
 
 <div class="booking-container">
-  <h2> Your Bookings</h2>
+  <h2>Your Bookings</h2>
+  <hr>
+</div>
   <!-- <a href="{% url 'addTimeSlot' %}" class="btn">Add + </a> -->
   <div class="bookings-grid">
     {% for booking in bookings %}
-    <div class="booking-card">
-      <div class="start-time">
-        <p class="label">Start time</p>
-        <p class="time">{{booking.startTime}} {{booking.startAMPM}}</p>
+    
+      <div class="booking-card">
+        <div class="start-time">
+          <p class="time">{{booking.player.firstName}} {{booking.player.lastName}}</p>
+          <p class="label">{{booking.date}}</p>
+        </div>
+        <div class="vertical-hr"></div>
+        <div class="end-time">
+          <p class="label">Time Slot</p>
+          <p class="time">{{booking.timeSlot.startTime}} {{booking.timeSlot.startAMPM}} - {{booking.timeSlot.endTime}} {{booking.timeSlot.endAMPM}}</p>
+        </div>
       </div>
-      <div class="end-time">
-        <p class="label">End time</p>
-        <p class="time">{{booking.endTime}} {{booking.endAMPM}}</p>
-      </div>
-    </div>
     {% endfor %}
   </div>
-{% endblock %}
+
+
+  {% endblock %}

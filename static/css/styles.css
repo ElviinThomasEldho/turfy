@@ -625,4 +625,39 @@ footer {
 }
 .start-time .time, .end-time .time {
     font-size: 20px;
+    color: black;
+}
+
+.booking-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.booking-container h2{
+    margin: 0;
+    padding: 0;
+    margin-right: 10px;
+}
+
+.booking-container hr{
+    width: 80%;
+    height: 0.5px;
+    color: white;
+}
+
+.booking-card{
+    display: flex;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.851);
+    color: black;
+    border-radius: 15px;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+}
+
+.booking-card p{
+    color: black;
 }
