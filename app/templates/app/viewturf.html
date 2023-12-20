@@ -1,61 +1,43 @@
 {% extends 'app/main.html' %} {% load static %} {% block title %}
 <title>Turfy | Login</title>
 {% endblock %} {% block content %}
-<div style="height: 300px; width: 1fr; background-color: blue">
-  <img src="#" alt="image of place" />
-</div>
-<h1>{{turf.turfName}}</h1>
-<div style="border: solid; border-color: black; border-width: 3px">
-  <p>description about place</p>
-  <p>{{turf.location}}</p>
-  <p>{{turf.size}}</p>
-  <p>{{turf.phoneNumber}}</p>
-  <p>{{turf.fieldSize}}</p>
-  <p>{{turf.pricePerSlot}}</p>
-  <p>time slots available</p>
-</div>
-<div
-  style="
-    border: solid;
-    border-width: 3px;
-    border-color: black;
-    display: flex;
-    justify-content: space-between;
-  "
->
-  <a href="{% url 'createBooking' turf.id %}">Book Turf</a>
-  <!-- <button>add to fav</button> -->
-</div>
-<h3>Bookings</h3>
-<table>
-  <thead>
-    <th>Player</th>
-    <th>Time Slot</th>
-    <th>Date</th>
-  </thead>
-  <tbody>
-    {% for booking in bookings %}
-    <td>{{booking.player.firstName}} {{booking.player.lastName}}</td>
-    <td>
-      {{booking.timeSlot.startTime}} {{booking.timeSlot.startAMPM}} -
-      {{booking.timeSlot.lastName}} {{booking.timeSlot.endAMPM}}
-    </td>
-    <td>{{booking.date}}</td>
-    {% endfor %}
-  </tbody>
-</table>
 
-<h3>Time Slots</h3>
-<table>
-  <thead>
-    <th>Start Time</th>
-    <th>End Time</th>
-  </thead>
-  <tbody>
-    {% for slot in slots %}
-    <td>{{slot.startTime}} {{slot.startAMPM}}</td>
-    <td>{{slot.endTime}} {{slot.endAMPM}}</td>
-    {% endfor %}
-  </tbody>
-</table>
+<div class="name-div">
+  <h1 class="turf-name">{{turf.turfName}}</h1>
+</div>
+<div class="view-main-div">
+  <div class="view-left-div">
+    <div class="view-turf-image">
+      <img src="#" alt="image of place" />
+    </div>
+    <div class="turf-desc">
+      <p class="turf-text">Nestled within urban embrace, the vibrant turf unfolds like an emerald canvas, a patchwork of greenery inviting play and repose. Lush blades dance to nature's whims, while the air hums with the laughter of gatherings. A haven for sport and leisure, this turf is a living tapestry woven with community spirit.This enchanting turf is situated in the heart of the city, a lively oasis of greenery that beckons visitors with its rich, emerald hues. The grass, meticulously cared for, sways gracefully in response to the gentle breeze. The ambiance is filled with the joyous sounds of people coming together—whether engaging in sports or simply enjoying a leisurely time outdoors. It's not just a physical space; it's a living, breathing tapestry where community bonds are forged amid the beauty of nature.</p>
+    </div>
+    <div class="view-turf-details">
+      <div class="turf-details">
+        <p class="view-turf-desc1">Location :{{turf.location}}</p>
+        <p class="view-turf-desc">Turf Size :{{turf.size}}</p>
+        <p class="view-turf-desc">Phone No. :{{turf.phoneNumber}}</p>
+        <p class="view-turf-desc">Field Size :{{turf.fieldSize}}</p>
+        <p class="view-turf-desc">Price Per Slot:{{turf.pricePerSlot}}</p>
+      </div>
+      <div class="turf-booking">
+        <label for="time slot">Time Slot</label>
+        <input type="time" name="time slot" id="time slot" placeholder="Time Slot"><br>
+        <label for="date">Date</label>
+        <input type="date" name="date" id="date" placeholder="Date"><br>
+        <a class="book-turf-button" href="{% url 'createBooking' turf.id %}">Book Turf</a>
+      </div>
+    </div>
+  </div>
+  <div class="view-right-div">
+    <div class="view-ratings">
+      <p class="ratings">3.5/5</p>
+    </div>
+    <div class="view-reviews">
+        <p class="reviews">No Reviews Yet</p>
+    </div>
+  </div>
+</div>
+
 {% endblock %}

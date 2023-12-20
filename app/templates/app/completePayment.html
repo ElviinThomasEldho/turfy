@@ -1,29 +1,12 @@
 {% extends 'app/main.html' %} {% load static %} {% block title %}
 <title>Turfy | Login</title>
 {% endblock %} {% block content %}
-<div style="display: flex; flex-direction: row; top: 60px">
-  <div
-    class="photo"
-    style="
-      border: solid;
-      border-color: grey;
-      height: 300px;
-      width: 200px;
-      margin-top: 60px;
-    "
-  >
-    photo
-  </div>
-  <div
-    class="info"
-    style="
-      border: solid;
-      border-color: grey;
-      height: 300px;
-      width: 200px;
-      margin-top: 60px;
-    "
-  >
+
+<div class="payment-heading">
+  <h1 class="turf-payment-heading">Turf Booking <br> Payment</h1>
+</div>
+
+<div class="payment-div">
     <form action="" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       <label for="mode">Mode of Payment</label><br />
@@ -33,7 +16,6 @@
       {{form.errors}}
       <button type="submit">Book</button>
     </form>
-  </div>
 </div>
 
 {% endblock %}

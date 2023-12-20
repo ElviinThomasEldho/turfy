@@ -4,6 +4,8 @@
 
 {% block title %}
 <title>Turfy | Login</title>
+<link rel="stylesheet" href="{% static 'css/styles1.css' %}" />
+
 {% endblock %}
 
 {% block content %}
@@ -19,23 +21,27 @@
         </div>
     </div>
     <br>
-    <div style="display: flex;flex-direction: row; justify-content: space-between;">
+    
+    <div class="search-turf">
         {% for turf in turfs %}
-        <div style="border-radius: 2px;border-color: grey;width: 400px;height: 300px;border: solid;display: flex;flex-direction: column;justify-content: space-between;">
-            <div style="background-color: lightblue; height: 150px;">PICture of Turf</div>
-            <div>
-                <p>{{turf.turfName}}</p>
+        <div class="search-card">
+            <div class="search-card-image"></div>
+            <div class="search-card-name-price">
+                <p class="search-card-name">{{turf.turfName}}</p>
+                <p class="search-card-price">Price {{turf.pricePerSlot}}</p>
             </div>
-            <div style="display: flex;vertical-align: top;">
-                <p>{{turf.location}}</p><br>
-                <p>13.2km from You</p>
+            <div class="search-card-location">
+                <p>{{turf.location}}</p>
             </div>
-            <div style="background-color: lightpink;justify-content: right;display: flex;flex-direction: row;justify-content: space-between;">
-                <p>Price {{turf.pricePerSlot}}</p>
-                <a href="{% url 'viewTurf' turf.id %}">view Details </a>
+            <hr class="hr-details">
+            <div class="search-card-details-div">
+                <a class="search-card-details" href="{% url 'viewTurf' turf.id %}"> View Details </a>
             </div>
         </div>
         {% endfor %}
+    </div>
+    <div>
+        <button class="view-all">View All</button>
     </div>
    
 {% endblock %}

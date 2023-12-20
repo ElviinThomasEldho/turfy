@@ -1,5 +1,61 @@
 {% extends 'app/main.html' %} {% load static %} {% block title %}
 <title>Turfy | Login</title>
 {% endblock %} {% block content %}
-<h1>Turfy</h1>
+<div></div>
+<div></div>
+<div></div>
+    <div class="index-catchline">
+        <h1>99 Problems but <br> a Pitch ain't one</h1>
+        <p class="index-catchline1">Turfy brings the turf to you</p>
+        <button class="index-join-button"> Join Now</button>
+        <button class="index-login-button">Log In</button>
+    </div>
+
+    <div class="index-para">
+        <p class="index-para1">Play your best game!</p>
+        <h1 class="index-para2">Rent a pitch in <br> just two clicks!</h1>
+    </div>
+
+    <div class="search-bar">
+        <div class="city">
+            <p class="first-heading">City</p>
+            <p class="second-heading">Select City</p>
+        </div>
+        <div class="vertical-hr"></div>
+        <div class="name">
+            <p class="first-heading1">Name</p>
+            <p class="second-heading1">Choose Turf</p>
+        </div>
+        <div class="vertical-hr"></div>
+        <div class="date">
+            <p class="first-heading1">Date</p>
+            <p class="second-heading1">Choose Date</p>
+        </div>
+    </div>
+
+    <div class="index-last-div">
+        <h1>Explore more Turfs</h1>
+        <div class="search-turf">
+            {% for turf in turfs %}
+            <div class="search-card">
+                <div class="search-card-image"></div>
+                <div class="search-card-name-price">
+                    <p class="search-card-name">{{turf.turfName}}</p>
+                    <p class="search-card-price">Price {{turf.pricePerSlot}}</p>
+                </div>
+                <div class="search-card-location">
+                    <p>{{turf.location}}</p>
+                </div>
+                <hr class="hr-details">
+                <div class="search-card-details-div">
+                    <a class="search-card-details" href="{% url 'viewTurf' turf.id %}"> View Details </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div>
+            <button class="view-all">View All</button>
+        </div>
+    </div>
+
 {% endblock %}

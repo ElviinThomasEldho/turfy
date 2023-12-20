@@ -6,41 +6,48 @@
 <hr />
 <form action="" method="POST" class="form">
   {% csrf_token %}
-  <label for="username">Username</label>
-  <input type="text" name="username" id="username" class="input-field" />
+  <div class="main-div">
+    <div class="left-div">
+      <label for="username"></label>
+      <input type="text" name="username" id="username" class="input-field" placeholder="Username"/><br>
 
-  <label for="email">Email</label>
-  <input type="email" name="email" id="email" class="input-field" />
+      <label for="email"></label>
+      <input type="email" name="email" id="email" class="input-field"placeholder="Email" /><br>
 
-  <label for="first_name">First Name</label>
-  <input type="text" name="first_name" id="first_name" class="input-field" />
+      <label for="first_name"></label>
+      <input type="text" name="first_name" id="first_name" class="input-field" placeholder="First Name"/><br>
 
-  <label for="last_name">Last Name</label>
-  <input type="text" name="last_name" id="last_name" class="input-field" />
+      <label for="last_name"></label>
+      <input type="text" name="last_name" id="last_name" class="input-field" placeholder="Last Name"/><br>
 
-  <label for="password1">Password</label>
-  <input type="password" name="password1" id="password1" class="input-field" />
+      <label for="phoneNumber"></label>
+      <input type="text" name="phoneNumber" id="phoneNumber" class="input-field"placeholder="Phone Number" /><br>
+    </div>
+    <div class="right-div">
+      <label for="turf-name"></label>
+      <input type="text" name="turfName" id="turfName" class="input-field" placeholder="Turf Name"/><br>
 
-  <label for="password2">Confirm Password</label>
-  <input type="password" name="password2" id="password2" class="input-field" />
+      <label for="location"></label>
+      <input type="text" name="location" id="location" class="input-field" placeholder="Location"/><br>
 
-  <label for="turf-name">Turf Name</label>
-  <input type="text" name="turfName" id="turfName" class="input-field" />
+      <label for="pricePerSlot"></label>
+      <input type="number" name="pricePerSlot" id="pricePerSlot" class="input-field" placeholder="Price per slot"/><br>
 
-  <label for="location">Location</label>
-  <input type="text" name="location" id="location" class="input-field" />
+      <label for="password1"></label>
+      <input type="password" name="password1" id="password1" class="input-field" placeholder="Password"/><br>
 
-  <label for="pricePerSlot">Price per slot</label>
-  <input type="number" name="pricePerSlot" id="pricePerSlot" class="input-field" />
-  <br />
-  <label for="phoneNumber">Phone Number</label>
-  <input type="text" name="phoneNumber" id="phoneNumber" class="input-field" />
-  <br />
-  <label for="password">Field Size</label>
-  <select name="fieldSize" id="fieldSize">
+      <label for="password2"></label>
+      <input type="password" name="password2" id="password2" class="input-field" placeholder="Confirm Password"/> <br> 
+    </div>
+  </div>
+<div class="row">
+  <label for="fieldSize">Field Size</label>
+  <select name="fieldSize" id="fieldSize" >
     <option value="5s">5s</option>
     <option value="7s">7s</option>
   </select>
+</div>
+ 
   <br />
   <button class="register-button">Register</button>
 </form>
