@@ -111,7 +111,7 @@ button, .btn {
 }
 
 .btn-nav {
-    background: transparent;
+    background: black;
     color: white;
     border: solid 2px white;
 }
@@ -319,20 +319,26 @@ footer {
 .view-left-div{
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 70%;
     height: 100%;
 }
 
 .view-right-div{
     display: flex;
     flex-direction: column;
-    width: 17%;
-    height: 100%;
+    width: 25%;
+    height: 50%;
     background-color: rgb(42, 42, 42);
     justify-content: center;
     align-items: center;
     border-radius: 50px;
+    padding: 10px;
+    padding-bottom: 30px;
 
+}
+
+.view-right-div h2{
+    margin-bottom: 20px;
 }
 
 .view-ratings{
@@ -375,6 +381,8 @@ footer {
 .view-turf-details{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .turf-details{
@@ -386,13 +394,15 @@ footer {
 
 .turf-booking{
     width: 60%;
-
     height: 100%;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-around;
+    align-items: start;
+}
+.turf-booking button{
+    margin-top: 20px;
 }
 
 .turf-booking * {
@@ -585,18 +595,34 @@ footer {
 .time-slots {
     display: flex;
     flex-direction: column;
+    width: 100%;
+}
+.time-slots h2{
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .slot-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
 }
 
 .slot-card {
     display: flex;
-    gap: 20px;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.851);
+    color: black;
+    border-radius: 15px;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
 }
 
+.slot-card p{
+    color: black;
+}
 .start-time .time, .end-time .time {
     font-size: 20px;
 }
