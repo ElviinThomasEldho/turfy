@@ -21,13 +21,6 @@
         <p class="view-turf-desc">Field Size :{{turf.fieldSize}}</p>
         <p class="view-turf-desc">Price Per Slot:{{turf.pricePerSlot}}</p>
       </div>
-      <div class="turf-booking">
-        <label for="time slot">Time Slot</label>
-        <input type="time" name="time slot" id="time slot" placeholder="Time Slot"><br>
-        <label for="date">Date</label>
-        <input type="date" name="date" id="date" placeholder="Date"><br>
-        <a class="book-turf-button" href="{% url 'createBooking' turf.id %}">Book Turf</a>
-      </div>
     </div>
   </div>
   <div class="view-right-div">

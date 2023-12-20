@@ -12,7 +12,7 @@ urlpatterns = [
     path('player-profile/', views.playerProfile, name='playerProfile'),
     path('search-turfs/', views.searchTurfs, name='searchTurfs'),
     path('view-turf/<int:pk>/', views.viewTurf, name='viewTurf'),
-    path('create-booking/<int:pk>/', views.createBooking, name='createBooking'),
+    # path('create-booking/<int:pk>/', views.createBooking, name='createBooking'),
     path('complete-payment/<int:pk>/', views.completePayment, name='completePayment'),
     path('cancel-booking/<int:pk>/', views.cancelBooking, name='cancelBooking'),
 
