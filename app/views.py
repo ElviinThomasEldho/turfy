@@ -13,8 +13,10 @@ from .decorators import *
 # USER VIEWS
 def index(request):
 
-    context = {
+    turfs = Turf.objects.all()
 
+    context = {
+        "turfs":turfs,
     }
 
     return render(request, 'app/index.html', context)
