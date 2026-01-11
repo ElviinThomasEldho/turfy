@@ -40,6 +40,7 @@
           <p class="label">Time Slot</p>
           <p class="time">{{booking.timeSlot.startTime}} {{booking.timeSlot.startAMPM}} - {{booking.timeSlot.endTime}} {{booking.timeSlot.endAMPM}}</p>
         </div>
+        <a href="{% url 'cancelBooking' booking.id %}">Cancel</a>
       </div>
     {% endfor %}
   </div>

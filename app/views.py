@@ -156,11 +156,10 @@ def completePayment(request, pk):
 
     return render(request, 'app/completePayment.html', context)
 
-@player_only
 def cancelBooking(request, pk):
     booking = Booking.objects.get(id=pk)
     booking.delete()
-    redirect('playerProfile')
+    return redirect('playerProfile')
 
 #TURF VIEWS
 def registerTurf(request):
